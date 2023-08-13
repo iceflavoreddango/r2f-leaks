@@ -1,0 +1,34 @@
+local function bloodtexture(parent)
+    local thinger = Instance.new("Texture",parent)
+end
+
+local ts = game:GetService("TweenService")
+
+print(math.random(1.0,2.0))
+
+local tweenInfo = TweenInfo.new(
+
+    0.4,
+    Enum.EasingStyle.Linear,
+    Enum.EasingDirection.Out,
+    0,
+    false,
+    0
+
+)
+
+local bloodplace = game.Workspace.Ignore.Blood
+local blood1 = game.ReplicatedStorage.BloodPool
+local blood2 = game.ReplicatedStorage.BloodBall
+
+blood1.Size = Vector3.new(2,2,0.1)
+blood2.Size = Vector3.new(2,2,0.1)
+
+bloodplace.ChildAdded:Connect(function(part)
+    for i,v in pairs(bloodplace:GetChildren()) do
+        local nVector = math.random(10,80)
+        local adjustVector = nVector/5
+        local tween = ts:Create(part, tweenInfo, {Size = Vector3.new(adjustVector,adjustVector,0.015)})
+        tween:Play()
+    end
+end)
