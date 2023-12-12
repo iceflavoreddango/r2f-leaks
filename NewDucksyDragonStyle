@@ -1,0 +1,4 @@
+_G.MorphMod = false 
+_G.CustomMorphSkin = false
+_G.VoiceMod = true 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ducksy9340/R2FModding/main/Dragon%20Style"))();
