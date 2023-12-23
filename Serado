@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SailordXXL/Rights-2-Fighting-Women-R2FW/main/Protected.lua"))();
