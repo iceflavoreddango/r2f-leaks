@@ -1,0 +1,419 @@
+-- An entire set of Right 2 Fight scripts in 1 UI
+local Rayfield = nil
+if isfile("UI/ArrayField.lua") then
+    Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
+else
+    Rayfield =
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field"))()
+end
+
+local Window =
+    Rayfield:CreateWindow(
+    {
+        Name = "⚙ Optioning ⚙",
+        LoadingTitle = "⚠ A Warning to User ⚠",
+        LoadingSubtitle = "https://discord.gg/HvWhajxV 🌠",
+        ConfigurationSaving = {
+            Enabled = false
+        },
+        Discord = {
+            Enabled = true,
+            Invite = "sashub", -- The Discord invite code, do not include discord.gg/
+            RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+        },
+        KeySystem = false, -- Set this to true to use our key system
+        KeySettings = {
+            Title = "Sassledge Premium",
+            Subtitle = "I hate school",
+            Note = "When will krnl be fixed frfr"
+        }
+    }
+)
+
+local Tab = Window:CreateTab("Optioning", 6022668955)
+local SecTab = Window:CreateTab("Free Version", 6022668883)
+local settingsTab = Window:CreateTab("Settings", 13075268290)
+
+local windowSettings = settingsTab:CreateSection("General Options", false, false, "13080063021")
+
+settingsTab:CreateToggle(
+    {
+        Name = "Compact Mode",
+        CurrentValue = true,
+        Flag = "Settings_CompactMode",
+        SectionParent = windowSettings,
+        Callback = function(value)
+            Rayfield:ToggleOldTabStyle(not value)
+        end
+    }
+)
+
+settingsTab:CreateButton(
+    {
+        Name = "Destroy UI",
+        Callback = function()
+            Rayfield:Destroy()
+        end
+    }
+)
+
+local Paragraph =
+    SecTab:CreateParagraph(
+    {
+        Title = "Welcome!",
+        Content = "Are you looking for another Decaying Winter script? Well there is, choose the script you wan't to execute!"
+    }
+)
+local Label = SecTab:CreateLabel("If there isn't the script you wanted to find, we are sorry for the inconvenience.")
+
+local Button =
+    SecTab:CreateButton(
+    {
+        Name = "SasSledge Hub",
+        Callback = function()
+            loadstring(
+                game:HttpGet(
+                    ("https://raw.githubusercontent.com/sasquatchhtv/Decayingbitches/main/DW-Script-1.75"),
+                    true
+                )
+            )()
+        end
+    }
+)
+local Paragraph =
+    Tab:CreateParagraph(
+    {
+        Title = "Wait!",
+        Content = "Are you in the right game? If not, click this button to be teleported to Right 2 Fight!"
+    }
+)
+local Button =
+    Tab:CreateButton(
+    {
+        Name = "Teleport",
+        Callback = function()
+            game:GetService("TeleportService"):Teleport(8170900938)
+        end
+    }
+)
+local Paragraph =
+    Tab:CreateParagraph(
+    {Title = "Warning!", Content = "This script may get your account banned! Do you wish to continue?"}
+)
+local Label = Tab:CreateLabel("Continue to execute the core script!")
+
+local Label = Tab:CreateLabel("Advice: Archive anything you think you're deserved for.")
+
+local Button =
+    Tab:CreateButton(
+    {
+        Name = "Quit",
+        Callback = function()
+            Rayfield:Destroy()
+        end
+    }
+)
+
+local Button =
+    Tab:CreateButton(
+    {
+        Name = "Continue",
+        Callback = function()
+            Rayfield:Destroy()
+
+            if LB_LOADED and not _G.LB_DEBUG == true then
+                -- error("Lucky Blessing is already running!", 0)
+                return
+            end
+
+            pcall(
+                function()
+                    getgenv().LB_LOADED = true
+                end
+            )
+
+            COREGUI = game:GetService("CoreGui")
+            if not game:IsLoaded() then
+                local notLoaded = Instance.new("Message")
+                notLoaded.Parent = COREGUI
+                notLoaded.Text = "Lucky Blessing is waiting for the game to load"
+                game.Loaded:Wait()
+                notLoaded:Destroy()
+            end
+
+            --[[
+
+	Sassledge By SasSquatch © CC0 1.0 Right 2 Fight (2023)
+
+	https://github.com/Sas
+
+]]
+            --//*--------- CACHES -----------//*
+
+            local loadstring, getgenv, setclipboard, tablefind, UserInputService =
+                loadstring,
+                getgenv,
+                setclipboard,
+                table.find,
+                game:GetService("UserInputService")
+
+            --//*--------- LOADED CHECKS -----------//*
+
+            if LuckyBlessing or LuckyBlesser then
+                return
+            end
+
+            --//*--------- ENVIROMENTS -----------//*
+
+            getgenv().LuckyBlessing = {}
+
+            --//*--------- LOADED MODULES -----------//*
+
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Aimbot.lua"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/WallHack.lua"))()
+
+            --//*--------- ESP VARIBLES -----------//*
+
+            local Aimbot, WallHack = getgenv().LuckyBlessing.Aimbot, getgenv().LuckyBlessing.WallHack
+            local Parts, Fonts, TracersType = {
+                    "Head",
+                    "HumanoidRootPart",
+                    "Torso",
+                    "Left Arm",
+                    "Right Arm",
+                    "Left Leg",
+                    "Right Leg",
+                    "LeftHand",
+                    "RightHand",
+                    "LeftLowerArm",
+                    "RightLowerArm",
+                    "LeftUpperArm",
+                    "RightUpperArm",
+                    "LeftFoot",
+                    "LeftLowerLeg",
+                    "UpperTorso",
+                    "LeftUpperLeg",
+                    "RightFoot",
+                    "RightLowerLeg",
+                    "LowerTorso",
+                    "RightUpperLeg"
+                },
+                {"UI", "System", "Plex", "Monospace"},
+                {"Bottom", "Center", "Mouse"}
+
+            local SCRIPT_NAME = "Sas Hub R2F"
+            local SCRIPT_VERSION = "| V0.8" -- REMEMBER TO UPDATE THIS SHIT IM TALKING TO MYSELF AND YOU DANGO
+
+            game.StarterGui:SetCore(
+                "ChatMakeSystemMessage",
+                {
+                    Text = "[Sas]: Oi, this script key is in our discord server and I suggest you use an alt account so you dont get banned :3.",
+                    Color = Color3.new(0, 255, 169),
+                    Font = Enum.Font.Code,
+                    FontSize = Enum.FontSize.Size24
+                }
+            )
+
+            game.StarterGui:SetCore(
+                "ChatMakeSystemMessage",
+                {
+                    Text = "Here the server invite link ''HvWhajxV''",
+                    Color = Color3.new(169, 255, 0),
+                    Font = Enum.Font.SciFi,
+                    FontSize = Enum.FontSize.Size24
+                }
+            )
+
+            game.StarterGui:SetCore(
+                "ChatMakeSystemMessage",
+                {
+                    Text = "Enjoy!",
+                    Color = Color3.new(0, 255, 0),
+                    Font = Enum.Font.Fantasy,
+                    FontSize = Enum.FontSize.Size24
+                }
+            )
+
+            game:GetService("StarterGui"):SetCore(
+                "SendNotification",
+                {
+                    Title = "Developers:",
+                    Text = "Ry, Waltuh White, SasSquatch, _petars_ and wolf",
+                    Duration = 6
+                }
+            )
+
+            game:GetService("StarterGui"):SetCore(
+                "SendNotification",
+                {
+                    Title = "Welcome to Our Wonderful creation!",
+                    Text = "Thank you for using the script!!",
+                    Duration = 6
+                }
+            )
+
+            game:GetService("StarterGui"):SetCore(
+                "SendNotification",
+                {
+                    Title = "if You Enjoy This.",
+                    Text = "Please leave a like on our Github!",
+                    Icon = "https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=ImCherry511",
+                    Duration = 6
+                }
+            )
+
+            game:GetService("StarterGui"):SetCore(
+                "SendNotification",
+                {
+                    Title = "SasSquatch Presents To You:",
+                    Text = "You are now in the Whitelister!",
+                    Icon = "rbxassetid://2572157833",
+                    Duration = 10
+                }
+            )
+
+            wait(3)
+
+            local Rayfield = nil
+            if isfile("UI/ArrayField.lua") then
+                Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
+            else
+                Rayfield =
+                    loadstring(
+                    game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field")
+                )()
+            end
+
+            -- local Rayfield = (isfile("UI/ArrayField.lua") and loadstring(readfile("UI/ArrayField.lua"))()) or loadstring(game:HttpGet("https://raw.githubusercontent.com/Rafacasari/ArrayField/main/v2.lua"))()
+            assert(Rayfield, "Oopps! Rayfield has not been loaded. Maybe try re-joining?")
+
+            getgenv().SecureMode = true
+            getgenv().DisableArrayfieldAutoLoad = true
+
+            -- Detect if the script has executed by AutoExec
+            local AutoExecuted = false
+            if not game:IsLoaded() then
+                AutoExecuted = true
+            end
+
+            repeat
+                task.wait()
+            until game.PlaceId ~= nil
+            if not game:IsLoaded() then
+                game.Loaded:Wait()
+            end
+
+            --//-------------- SERVICES ----------------//*
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local Players = game:GetService("Players")
+            local LocalPlayer = Players.LocalPlayer
+            local HttpService = game:GetService("HttpService")
+            local InputService = game:GetService("UserInputService")
+            local RunService = game:GetService("RunService")
+            local ContentProvider = game:GetService("ContentProvider")
+
+            --//*--------- GLOBAL VARIABLES -----------//*
+            local ScriptIsCurrentlyBusy = false
+            local Character = nil
+            local Humanoid = nil
+            local HumanoidRootPart = nil
+            local CurrentWorld = ""
+            local CurrentPosition = nil
+
+            local Settings_DisableRendering = true
+
+            local Webhook_Enabled = true
+            local Webhook_URL =
+                "https://webhook.lewisakura.moe/api/webhooks/1155857406035755008/g3BxUlLjZMJq5OWyPpAUXqsD3cnwO8UkQtKJkudprDE_yS9rvlPpA7uC-LaYR1uZ8hbj/queue"
+
+            --Replace your link with the link in the Quotes.
+
+            local MessageData = {
+                ["content"] = "Hoi, A user executed Lucky Blessing!"
+            }
+
+            MessageData = HttpService:JSONEncode(MessageData)
+            --We used JSONEncode to convert the Lua Table into a Json String
+
+            HttpService:PostAsync(Webhook_URL, MessageData)
+
+            LocalPlayer.CharacterAdded:Connect(
+                function(char)
+                    Character = char
+                    Humanoid = Character:WaitForChild("Humanoid")
+                    HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+                end
+            )
+
+            --//*--------- CORE SCRIPT -----------//*
+
+            local Window =
+                Rayfield:CreateWindow(
+                {
+                    Name = SCRIPT_NAME .. " " .. SCRIPT_VERSION,
+                    LoadingTitle = "Sas Hub ''Premium DWinter Script''",
+                    LoadingSubtitle = "Made by alot of people",
+                    ConfigurationSaving = {
+                        Enabled = true,
+                        FolderName = "Ry", -- Create a custom folder for your hub/game
+                        FileName = "Raccoon Hub"
+                    },
+                    Discord = {
+                        Enabled = true,
+                        Invite = "HvWhajxV", -- The Discord invite code, do not include discord.gg/
+                        RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+                    },
+                    KeySystem = true, -- Set this to true to use our key system
+                    KeySettings = {
+                        Title = "The key system",
+                        Subtitle = "key is Skill issue",
+                        Note = "Fuck Skids -Sasquatch_htv - Agreed By Walter White",
+                        SaveKey = true,
+                        GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+                        Key = "Skill issue"
+                    }
+                }
+            )
+
+            --- Rayfield Old Tab Layout
+            Rayfield:ToggleOldTabStyle(true)
+
+            Rayfield:Notify(
+                {
+                    Title = "Key System",
+                    Content = "By Getting The Key System, You accept to our that you will be mauled by 4 bears at 14/02/24",
+                    Duration = 6.5,
+                    Image = 6022668883,
+                    Actions = {
+                        -- Notification Buttons
+                        Ignore = {
+                            Name = "Okay, i got it",
+                            Callback = function()
+                                warn("The user Replied, Okay!")
+                            end
+                        }
+                    }
+                }
+            )
+
+
+
+            local Tab = Window:CreateTab("Main Tab", 6026568198)
+
+            -- local Section = Tab:CreateSection("t")
+            --// Functions
+
+            local windowSettings = Tab:CreateSection("The goodies")
+
+            Tab:CreateButton(
+                {
+                    Name = "Ducksy Dragon",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/NewDucksyDragonStyle"
+                            )
+                        )()
+                    end
+                }
+            )
