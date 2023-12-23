@@ -1,3 +1,4 @@
+-- Pls use he loadstring since it too godamn long: loadstring(game:HttpGet("https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/ASas's%20R2F%20Bundle"))();
 -- An entire set of Right 2 Fight scripts in 1 UI
 local Rayfield = nil
 if isfile("UI/ArrayField.lua") then
@@ -417,3 +418,225 @@ local Button =
                     end
                 }
             )
+
+            Tab:CreateButton(
+                {
+                    Name = "Sugarcoat it(Use a counter :3",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/sugaercoat_it%20(1).lua"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Akiyama on a budget",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Akiyama_on_Budget.txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Akiyama on a budget",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Akiyama_on_Budget.txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Cobra kai",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/COBRA_KAI.txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Dizzy Style",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Dizzy%20style"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Ghost style",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/GHOST_STYLE_BROKEN_1%20(1).txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Kaj Dragon",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Kaj%20Dragon"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "MadnessMyh Dragon",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Madnessmyth_Dragon.lua"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Noob x Pot",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Noob_x_pot.txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Rollenz",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Rollenz_Style%20(1).txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Sawaii",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Sawaii_Style_1.txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Serado",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Serado"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "DODsum(Dragon)",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/dodsum"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Excessive blood",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/excessiveblood"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Kiryu morph",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/morph%20mod%20(1).txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Pheonix",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/phoenix_1.txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Shakedown",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/shakedown%20(1).txt"
+                            )
+                        )()
+                    end
+                }
+            )
+
