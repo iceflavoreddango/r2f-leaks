@@ -1,0 +1,185 @@
+--Fisticuffs but Yakuza 2 attack speed?
+--this is for the modded DoD version
+--------------------fisticuffer replaced by dragoner???-------------
+local repstor = game:GetService("ReplicatedStorage")
+local brawl = repstor.Styles.Brawler
+local plr = game.Players.LocalPlayer
+local status = plr.Status
+local char = plr.Character
+local interf = plr.PlayerGui.Interface
+local bt = interf.Battle
+local main = bt.Main
+local pfp = main.GUY.GUY
+pfp.Image = "http://www.roblox.com/asset/?id=14745230101"
+pfp.Position = UDim2.new(0.45, 0, 0, 0)
+pfp.Size = UDim2.new(0.95, 0, 1.28, 0)
+
+brawl.VisualName.Value = "Dragon of Dojima"
+brawl.Color.Value = Color3.fromRGB(255,0,0)
+-------------this thing costed me 20000 errors in console-----------
+local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+local UT = game.Players.LocalPlayer.Character.UpperTorso["r2f_aura_burst"]
+
+local sleepcolor = Color3.fromRGB(255,0,0)
+local sleepseq = ColorSequence.new{ColorSequenceKeypoint.new(0, sleepcolor), ColorSequenceKeypoint.new(1, sleepcolor)}
+
+local hrptable = {
+  a1 = "Fire_Main",
+  a2 = "Fire_Secondary",
+  b1 = "Lines1",
+  b2 = "Lines2",
+  c3 = "Sparks",
+}
+
+local UTtable = {
+  a1 = "Flare",
+  a2 = "Smoke",
+  b1 = "Lines1",
+  b2 = "Lines2",
+}
+
+local function colorchange()
+game.Players.LocalPlayer.Character.UpperTorso.Evading.Color = sleepseq
+if game.Players.LocalPlayer.Status.Style.Value == "Brawler" then
+  for i,v in pairs(hrptable) do
+    hrp[v].Color = sleepseq
+    end
+  for i,v in pairs(UTtable) do
+    UT[v].Color = sleepseq
+    end
+  end
+end
+
+game:GetService("RunService").RenderStepped:Connect(function()
+colorchange()
+end)
+-----------------RUSH ATTACKS-------------------------------------
+brawl.Rush1.Value = "龍Attack1"
+brawl.Rush2.Value = "龍Attack2"
+brawl.Rush3.Value = "龍Attack3"
+brawl.Rush4.Value = "龍Attack4"
+-----------------FINISHING BLOWS----------------------------------
+brawl.Strike1.Value = "龍Strike1"
+brawl.Strike2.Value = "BStrike2"
+brawl.Strike3.Value = "BStrike3"
+brawl.Strike4.Value = "BStrike5"
+brawl.Strike5.Value = "龍Strike5"
+-----------------DOUBLE FINISHING BLOWS---------------------------
+brawl["2Strike2"].Value = "龍2Strike1"
+brawl["2Strike3"].Value = "龍2Strike2"
+brawl["2Strike4"].Value = "龍2Strike3"
+brawl["2Strike5"].Value = "龍2Strike4"
+------------------SPECIAL-----------------------------------------
+brawl.Grab.Value = "GGrab"
+brawl.StanceStrike.Value = "龍TigerDrop"
+--------------------------wha---------------------------------------
+game.ReplicatedStorage.Moves["龍Attack1"].AniSpeed.Value = "1.45"
+game.ReplicatedStorage.Moves["龍Attack2"].AniSpeed.Value = "1.45"
+game.ReplicatedStorage.Moves["龍Attack3"].AniSpeed.Value = "1.45"
+game.ReplicatedStorage.Moves["龍Attack4"].AniSpeed.Value = "1.45"
+game.ReplicatedStorage.Moves["龍Attack1"].ComboAt.Value = "0.3"
+game.ReplicatedStorage.Moves["龍Attack2"].ComboAt.Value = "0.3"
+game.ReplicatedStorage.Moves["龍Attack3"].ComboAt.Value = "0.3"
+game.ReplicatedStorage.Moves["龍Attack4"].ComboAt.Value = "0.3"
+------------------------------strikes & stomp-----------------------
+game.ReplicatedStorage.Moves["龍Strike1"].AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.BStrike2.AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.BStrike3.AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.BStrike4.AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves["龍Strike5"].AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.BStomp.AniSpeed.Value = "1.35"
+-----------------------double strikes--------------------------------
+game.ReplicatedStorage.Moves["龍2Strike1"].AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves["龍2Strike2"].AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves["龍2Strike3"].AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves["龍2Strike4"].AniSpeed.Value = "1.25"
+--------------------------taunt & grabs & extender moves------------
+game.ReplicatedStorage.Moves.DragonTaunt.AniSpeed.Value = "1.35"
+game.ReplicatedStorage.Moves.TB_BToss.AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.TB_FH1.AniSpeed.Value = "1.15"
+game.ReplicatedStorage.Moves.TB_FH4.AniSpeed.Value = "1.15"
+game.ReplicatedStorage.Moves.TB_LegToss.AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.TB_Throwing.AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.TFPunch1.AniSpeed.Value = "1.25"
+game.ReplicatedStorage.Moves.BEvadeStrikeBack.AniSpeed.Value = "1.35"
+game.ReplicatedStorage.Moves.BEvadeStrikeForward.AniSpeed.Value = "1.35"
+game.ReplicatedStorage.Moves.BEvadeStrikeLeft.AniSpeed.Value = "1.35"
+game.ReplicatedStorage.Moves.BEvadeStrikeRight.AniSpeed.Value = "1.35"
+----------------------heat actions---------------
+brawl.H_CounterSoloAllBack.Value = "H_TSpinCounterBack"
+brawl.H_CounterSoloAllFront.Value = "H_TSpinCounterFront"
+brawl.H_CounterSoloAllLeft.Value = "H_TSpinCounterLeft"
+brawl.H_CounterSoloAllRight.Value = "H_TSpinCounterRight"
+brawl.H_Fallen.Value = "H_FallenStomp"
+brawl.H_FallenDown.Value = "H_FallenKick"
+-----------------------------test---------------------------------
+brawl.StrikeThrow.Value = "T_龍FinishingHold"
+game.ReplicatedStorage.Moves.T_FinishingHold1.Name = "T_龍FinishingHold1"
+game.ReplicatedStorage.Moves.T_FinishingHold2.Name = "T_龍FinishingHold2"
+game.ReplicatedStorage.Moves.T_FinishingHold3.Name = "T_龍FinishingHold3"
+game.ReplicatedStorage.Moves.T_FinishingHold4.Name = "T_龍FinishingHold4"
+---------------------------new? in your dreams-----------
+local hacts = {
+ {name = "H_StanceFallen", value = "H_FallenSupine", type = "StringValue"},
+ {name = "H_TwoHandeds", value = "H_SelfDestruct", type = "StringValue"},
+  {name = "Taunt", value = "DragonTaunt", type = "StringValue"},
+  {name = "H_Running4", value = "H_Terror", type = "StringValue"},
+  {name = "RedHeat", value = nil, type = "Folder"}
+}
+
+local datatype = nil
+
+for i, data in ipairs(hacts) do
+
+if not brawl:FindFirstChild(data.name) then
+local newhact = Instance.new(data.type,brawl)
+	newhact.Name = data.name
+if data.value ~= nil then
+	newhact.Value = data.value
+		end
+	end
+end
+-----------------------make them believe-------------------------
+game.Players.LocalPlayer.PlayerGui.Interface.EndGood.Value = "rbxassetid://4875337164"
+----------------------------Time For Resolve Buff----------------
+--gives iframes for how long it lasts giving you an option to actually last longer at low health
+local status = game.Players.LocalPlayer.Status
+
+local function invuln(YesOrNo)
+    if YesOrNo == "Yes" then
+        local invul = Instance.new("Folder", status)
+        invul.Name = "Invulnerable"
+    else
+        status.Invulnerable:Destroy()
+    end
+end
+
+status.ChildAdded:Connect(function(CD)
+wait(0.05)
+    if CD.Name == "ANGRY" then
+        if status.ANGRY:FindFirstChild("Type") then
+            if status.ANGRY.Type.Value == "Resist" then
+                invuln("Yes")
+            end
+        end
+    end
+end)
+
+status.ChildRemoved:Connect(function(CD)
+    if CD.Name == "ANGRY" then
+        invuln("No")
+    end
+end)
+
+----------------------------ANIMATION CHANGES-----------------------
+local pgui = game.Players.LocalPlayer.PlayerGui
+local interf = pgui.Interface
+
+brawl.Idle.AnimationId = "rbxassetid://12120045620"
+repstor.Moves["龍TigerDrop"].Anim.AnimationId = "rbxassetid://12120052426"
+
+interf.Client.Disabled = true
+task.wait(0.1)
+interf.Client.Disabled = false
+
+repstor.Moves["龍TigerDrop"].Anim.AnimationId = "rbxassetid://0"
