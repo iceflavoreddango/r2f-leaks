@@ -1,0 +1,121 @@
+-- Key: Skill issue
+-- UNFINISHED
+game.StarterGui:SetCore(
+    "ChatMakeSystemMessage",
+    {
+        Text = "[Sas]: Oi, please join my discord server plz :3",
+        Color = Color3.new(0, 255, 169),
+        Font = Enum.Font.Code,
+        FontSize = Enum.FontSize.Size24
+    }
+)
+
+game.StarterGui:SetCore(
+    "ChatMakeSystemMessage",
+    {
+        Text = "Here the server invite link ''HvWhajxV''",
+        Color = Color3.new(169, 255, 0),
+        Font = Enum.Font.SciFi,
+        FontSize = Enum.FontSize.Size24
+    }
+)
+
+game.StarterGui:SetCore(
+    "ChatMakeSystemMessage",
+    {
+        Text = "Enjoy!",
+        Color = Color3.new(0, 255, 0),
+        Font = Enum.Font.Fantasy,
+        FontSize = Enum.FontSize.Size24
+    }
+)
+
+game:GetService("StarterGui"):SetCore(
+    "SendNotification",
+    {
+        Title = "Leakers:",
+        Text = "Sas, Dango",
+        Duration = 6
+    }
+)
+
+local Rayfield = nil
+if isfile("UI/ArrayField.lua") then
+    Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
+else
+    Rayfield =
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/ArrayField.lua"))()
+end
+
+-- local Rayfield = (isfile("UI/ArrayField.lua") and loadstring(readfile("UI/ArrayField.lua"))()) or loadstring(game:HttpGet("https://raw.githubusercontent.com/Rafacasari/ArrayField/main/v2.lua"))()
+assert(Rayfield, "Oopps! Rayfield has not been loaded. Maybe try re-joining?")
+
+getgenv().SecureMode = true
+
+local ScriptIsCurrentlyBusy = false
+local Character = nil
+local Humanoid = nil
+local HumanoidRootPart = nil
+local CurrentWorld = ""
+local CurrentPosition = nil
+
+local Settings_DisableRendering = true
+
+local Webhook_Enabled = false
+local Webhook_URL = ""
+
+local Window =
+    Rayfield:CreateWindow(
+    {
+        Name = "SasSledge Free R2f Script",
+        LoadingTitle = "Agent, Hop of that computer call.",
+        LoadingSubtitle = "Fuck the skids",
+        ConfigurationSaving = {
+            Enabled = false,
+            FolderName = nil, -- Create a custom folder for your hub/game
+            FileName = "1771717t26g276277g127t476t17t47t21g4g5g1261253672185"
+        },
+        Discord = {
+            Enabled = true,
+            Invite = "HvWhajxV'", -- The Discord invite code, do not include discord.gg/
+            RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+        KeySystem = true, -- Set this to true to use our key system
+        KeySettings = {
+            Title = "Key system(Key: Skill issue)",
+            Subtitle = "Hop on 2Fort",
+            Note = "Join the Sas Scripting Server(sashub)",
+            SaveKey = true,
+            GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+            Key = "Skill issue"
+        }
+    }
+)
+
+local Tab = Window:CreateTab("The good stuff", 10590477450)
+
+-- local Section = Tab:CreateSection("t")
+
+local Button =
+    Tab:CreateButton(
+    {
+        Name = "Akiyama on Budget",
+        Callback = function()
+            loadstring(
+                game:HttpGet("https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Akiyama_on_Budget.txt")
+            )()
+        end
+    }
+)
+
+    Tab:CreateButton(
+    {
+        Name = "Akiyama on Budget",
+        Callback = function()
+            loadstring(
+                game:HttpGet("https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/COBRA_KAI.txt")
+            )()
+        end
+    }
+)
+
