@@ -434,6 +434,32 @@ local Button =
 
             Tab:CreateButton(
                 {
+                    Name = "Custom UI",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Custom_UI.lua"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
+                    Name = "Yakuza 0 style icon",
+                    Callback = function()
+                        loadstring(
+                            game:HttpGet(
+                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Style_Icons%20(1).lua"
+                            )
+                        )()
+                    end
+                }
+            )
+
+            Tab:CreateButton(
+                {
                     Name = "Akiyama on a budget",
                     Callback = function()
                         loadstring(
