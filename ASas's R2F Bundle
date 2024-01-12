@@ -2,34 +2,34 @@
 -- An entire set of Right 2 Fight scripts in 1 UI
 local Rayfield = nil
 if isfile("UI/ArrayField.lua") then
-    Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
+	Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
 else
-    Rayfield =
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field"))()
+	Rayfield =
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field"))()
 end
 
 local Window =
-    Rayfield:CreateWindow(
-    {
-        Name = "⚙ Optioning ⚙",
-        LoadingTitle = "⚠ A Warning to User ⚠",
-        LoadingSubtitle = "https://discord.gg/HvWhajxV 🌠",
-        ConfigurationSaving = {
-            Enabled = false
-        },
-        Discord = {
-            Enabled = true,
-            Invite = "sashub", -- The Discord invite code, do not include discord.gg/
-            RememberJoins = false -- Set this to false to make them join the discord every time they load it up
-        },
-        KeySystem = false, -- Set this to true to use our key system
-        KeySettings = {
-            Title = "Sassledge Premium",
-            Subtitle = "I hate school",
-            Note = "When will krnl be fixed frfr"
-        }
-    }
-)
+	Rayfield:CreateWindow(
+		{
+			Name = "⚙ Optioning ⚙",
+			LoadingTitle = "⚠ A Warning to User ⚠",
+			LoadingSubtitle = "https://discord.gg/HvWhajxV 🌠",
+			ConfigurationSaving = {
+				Enabled = false
+			},
+			Discord = {
+				Enabled = true,
+				Invite = "sashub", -- The Discord invite code, do not include discord.gg/
+				RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+			},
+			KeySystem = false, -- Set this to true to use our key system
+			KeySettings = {
+				Title = "Sassledge Premium",
+				Subtitle = "I hate school",
+				Note = "When will krnl be fixed frfr"
+			}
+		}
+	)
 
 local Tab = Window:CreateTab("Optioning", 6022668955)
 local SecTab = Window:CreateTab("Free Version", 6022668883)
@@ -38,109 +38,109 @@ local settingsTab = Window:CreateTab("Settings", 13075268290)
 local windowSettings = settingsTab:CreateSection("General Options", false, false, "13080063021")
 
 settingsTab:CreateToggle(
-    {
-        Name = "Compact Mode",
-        CurrentValue = true,
-        Flag = "Settings_CompactMode",
-        SectionParent = windowSettings,
-        Callback = function(value)
-            Rayfield:ToggleOldTabStyle(not value)
-        end
-    }
+	{
+		Name = "Compact Mode",
+		CurrentValue = true,
+		Flag = "Settings_CompactMode",
+		SectionParent = windowSettings,
+		Callback = function(value)
+			Rayfield:ToggleOldTabStyle(not value)
+		end
+	}
 )
 
 settingsTab:CreateButton(
-    {
-        Name = "Destroy UI",
-        Callback = function()
-            Rayfield:Destroy()
-        end
-    }
+	{
+		Name = "Destroy UI",
+		Callback = function()
+			Rayfield:Destroy()
+		end
+	}
 )
 
 local Paragraph =
-    SecTab:CreateParagraph(
-    {
-        Title = "Welcome!",
-        Content = "Are you looking for another Decaying Winter script? Well there is, choose the script you wan't to execute!"
-    }
-)
+	SecTab:CreateParagraph(
+		{
+			Title = "Welcome!",
+			Content = "Are you looking for another Decaying Winter script? Well there is, choose the script you wan't to execute!"
+		}
+	)
 local Label = SecTab:CreateLabel("If there isn't the script you wanted to find, we are sorry for the inconvenience.")
 
 local Button =
-    SecTab:CreateButton(
-    {
-        Name = "SasSledge Hub",
-        Callback = function()
-            loadstring(
-                game:HttpGet(
-                    ("https://raw.githubusercontent.com/sasquatchhtv/Decayingbitches/main/DW-Script-1.75"),
-                    true
-                )
-            )()
-        end
-    }
-)
+	SecTab:CreateButton(
+		{
+			Name = "SasSledge Hub",
+			Callback = function()
+				loadstring(
+					game:HttpGet(
+						("https://raw.githubusercontent.com/sasquatchhtv/Decayingbitches/main/DW-Script-1.75"),
+						true
+					)
+				)()
+			end
+		}
+	)
 local Paragraph =
-    Tab:CreateParagraph(
-    {
-        Title = "Wait!",
-        Content = "Are you in the right game? If not, click this button to be teleported to Right 2 Fight!"
-    }
-)
+	Tab:CreateParagraph(
+		{
+			Title = "Wait!",
+			Content = "Are you in the right game? If not, click this button to be teleported to Right 2 Fight!"
+		}
+	)
 local Button =
-    Tab:CreateButton(
-    {
-        Name = "Teleport",
-        Callback = function()
-            game:GetService("TeleportService"):Teleport(8170900938)
-        end
-    }
-)
+	Tab:CreateButton(
+		{
+			Name = "Teleport",
+			Callback = function()
+				game:GetService("TeleportService"):Teleport(8170900938)
+			end
+		}
+	)
 local Paragraph =
-    Tab:CreateParagraph(
-    {Title = "Warning!", Content = "This script may get your account banned! Do you wish to continue?"}
-)
+	Tab:CreateParagraph(
+		{Title = "Warning!", Content = "This script may get your account banned! Do you wish to continue?"}
+	)
 local Label = Tab:CreateLabel("Continue to execute the core script!")
 
 local Label = Tab:CreateLabel("Advice: Archive anything you think you're deserved for.")
 
 local Button =
-    Tab:CreateButton(
-    {
-        Name = "Quit",
-        Callback = function()
-            Rayfield:Destroy()
-        end
-    }
-)
+	Tab:CreateButton(
+		{
+			Name = "Quit",
+			Callback = function()
+				Rayfield:Destroy()
+			end
+		}
+	)
 
 local Button =
-    Tab:CreateButton(
-    {
-        Name = "Continue",
-        Callback = function()
-            Rayfield:Destroy()
+	Tab:CreateButton(
+		{
+			Name = "Continue",
+			Callback = function()
+				Rayfield:Destroy()
 
-            if LB_LOADED and not _G.LB_DEBUG == true then
-                -- error("Lucky Blessing is already running!", 0)
-                return
-            end
+				if LB_LOADED and not _G.LB_DEBUG == true then
+				-- error("Lucky Blessing is already running!", 0)
+				return
+			end
 
-            pcall(
-                function()
-                    getgenv().LB_LOADED = true
-                end
-            )
+				pcall(
+					function()
+						getgenv().LB_LOADED = true
+					end
+				)
 
-            COREGUI = game:GetService("CoreGui")
-            if not game:IsLoaded() then
-                local notLoaded = Instance.new("Message")
-                notLoaded.Parent = COREGUI
-                notLoaded.Text = "Lucky Blessing is waiting for the game to load"
-                game.Loaded:Wait()
-                notLoaded:Destroy()
-            end
+				COREGUI = game:GetService("CoreGui")
+				if not game:IsLoaded() then
+				local notLoaded = Instance.new("Message")
+				notLoaded.Parent = COREGUI
+				notLoaded.Text = "Lucky Blessing is waiting for the game to load"
+				game.Loaded:Wait()
+				notLoaded:Destroy()
+			end
 
             --[[
 
@@ -149,520 +149,1005 @@ local Button =
 	https://github.com/Sas
 
 ]]
-            --//*--------- CACHES -----------//*
+				--//*--------- CACHES -----------//*
 
-            local loadstring, getgenv, setclipboard, tablefind, UserInputService =
-                loadstring,
-                getgenv,
-                setclipboard,
-                table.find,
-                game:GetService("UserInputService")
+				local loadstring, getgenv, setclipboard, tablefind, UserInputService =
+				loadstring,
+				getgenv,
+				setclipboard,
+				table.find,
+				game:GetService("UserInputService")
 
-            --//*--------- LOADED CHECKS -----------//*
+				--//*--------- LOADED CHECKS -----------//*
 
-            if LuckyBlessing or LuckyBlesser then
-                return
-            end
+				if LuckyBlessing or LuckyBlesser then
+				return
+			end
 
-            --//*--------- ENVIROMENTS -----------//*
+				--//*--------- ENVIROMENTS -----------//*
 
-            getgenv().LuckyBlessing = {}
+				getgenv().LuckyBlessing = {}
 
-            --//*--------- LOADED MODULES -----------//*
+				--//*--------- LOADED MODULES -----------//*
 
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Aimbot.lua"))()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/WallHack.lua"))()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Aimbot.lua"))()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/WallHack.lua"))()
 
-            --//*--------- ESP VARIBLES -----------//*
+				--//*--------- ESP VARIBLES -----------//*
 
-            local Aimbot, WallHack = getgenv().LuckyBlessing.Aimbot, getgenv().LuckyBlessing.WallHack
-            local Parts, Fonts, TracersType = {
-                    "Head",
-                    "HumanoidRootPart",
-                    "Torso",
-                    "Left Arm",
-                    "Right Arm",
-                    "Left Leg",
-                    "Right Leg",
-                    "LeftHand",
-                    "RightHand",
-                    "LeftLowerArm",
-                    "RightLowerArm",
-                    "LeftUpperArm",
-                    "RightUpperArm",
-                    "LeftFoot",
-                    "LeftLowerLeg",
-                    "UpperTorso",
-                    "LeftUpperLeg",
-                    "RightFoot",
-                    "RightLowerLeg",
-                    "LowerTorso",
-                    "RightUpperLeg"
-                },
-                {"UI", "System", "Plex", "Monospace"},
-                {"Bottom", "Center", "Mouse"}
+				local Aimbot, WallHack = getgenv().LuckyBlessing.Aimbot, getgenv().LuckyBlessing.WallHack
+				local Parts, Fonts, TracersType = {
+					"Head",
+					"HumanoidRootPart",
+					"Torso",
+					"Left Arm",
+					"Right Arm",
+					"Left Leg",
+					"Right Leg",
+					"LeftHand",
+					"RightHand",
+					"LeftLowerArm",
+					"RightLowerArm",
+					"LeftUpperArm",
+					"RightUpperArm",
+					"LeftFoot",
+					"LeftLowerLeg",
+					"UpperTorso",
+					"LeftUpperLeg",
+					"RightFoot",
+					"RightLowerLeg",
+					"LowerTorso",
+					"RightUpperLeg"
+				},
+				{"UI", "System", "Plex", "Monospace"},
+				{"Bottom", "Center", "Mouse"}
 
-            local SCRIPT_NAME = "Sas Hub R2F"
-            local SCRIPT_VERSION = "| V0.8" -- REMEMBER TO UPDATE THIS SHIT IM TALKING TO MYSELF AND YOU DANGO
+				local SCRIPT_NAME = "Sas Hub R2F"
+				local SCRIPT_VERSION = "| V0.8" -- REMEMBER TO UPDATE THIS SHIT IM TALKING TO MYSELF AND YOU DANGO
 
-            game.StarterGui:SetCore(
-                "ChatMakeSystemMessage",
-                {
-                    Text = "[Sas]: Oi, this script key is in our discord server and I suggest you use an alt account so you dont get banned :3.",
-                    Color = Color3.new(0, 255, 169),
-                    Font = Enum.Font.Code,
-                    FontSize = Enum.FontSize.Size24
-                }
-            )
+				game.StarterGui:SetCore(
+					"ChatMakeSystemMessage",
+					{
+						Text = "[Sas]: Oi, this script key is in our discord server and I suggest you use an alt account so you dont get banned :3.",
+						Color = Color3.new(0, 255, 169),
+						Font = Enum.Font.Code,
+						FontSize = Enum.FontSize.Size24
+					}
+				)
 
-            game.StarterGui:SetCore(
-                "ChatMakeSystemMessage",
-                {
-                    Text = "Here the server invite link ''HvWhajxV''",
-                    Color = Color3.new(169, 255, 0),
-                    Font = Enum.Font.SciFi,
-                    FontSize = Enum.FontSize.Size24
-                }
-            )
+				game.StarterGui:SetCore(
+					"ChatMakeSystemMessage",
+					{
+						Text = "Here the server invite link ''HvWhajxV''",
+						Color = Color3.new(169, 255, 0),
+						Font = Enum.Font.SciFi,
+						FontSize = Enum.FontSize.Size24
+					}
+				)
 
-            game.StarterGui:SetCore(
-                "ChatMakeSystemMessage",
-                {
-                    Text = "Enjoy!",
-                    Color = Color3.new(0, 255, 0),
-                    Font = Enum.Font.Fantasy,
-                    FontSize = Enum.FontSize.Size24
-                }
-            )
+				game.StarterGui:SetCore(
+					"ChatMakeSystemMessage",
+					{
+						Text = "Enjoy!",
+						Color = Color3.new(0, 255, 0),
+						Font = Enum.Font.Fantasy,
+						FontSize = Enum.FontSize.Size24
+					}
+				)
 
-            game:GetService("StarterGui"):SetCore(
-                "SendNotification",
-                {
-                    Title = "Developers:",
-                    Text = "Ry, Waltuh White, SasSquatch, _petars_ and wolf",
-                    Duration = 6
-                }
-            )
+				game:GetService("StarterGui"):SetCore(
+				"SendNotification",
+				{
+					Title = "Developers:",
+					Text = "Ry, Waltuh White, SasSquatch, _petars_ and wolf",
+					Duration = 6
+				}
+				)
 
-            game:GetService("StarterGui"):SetCore(
-                "SendNotification",
-                {
-                    Title = "Welcome to Our Wonderful creation!",
-                    Text = "Thank you for using the script!!",
-                    Duration = 6
-                }
-            )
+				game:GetService("StarterGui"):SetCore(
+				"SendNotification",
+				{
+					Title = "Welcome to Our Wonderful creation!",
+					Text = "Thank you for using the script!!",
+					Duration = 6
+				}
+				)
 
-            game:GetService("StarterGui"):SetCore(
-                "SendNotification",
-                {
-                    Title = "if You Enjoy This.",
-                    Text = "Please leave a like on our Github!",
-                    Icon = "https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=ImCherry511",
-                    Duration = 6
-                }
-            )
+				game:GetService("StarterGui"):SetCore(
+				"SendNotification",
+				{
+					Title = "if You Enjoy This.",
+					Text = "Please leave a like on our Github!",
+					Icon = "https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=ImCherry511",
+					Duration = 6
+				}
+				)
 
-            game:GetService("StarterGui"):SetCore(
-                "SendNotification",
-                {
-                    Title = "SasSquatch Presents To You:",
-                    Text = "You are now in the Whitelister!",
-                    Icon = "rbxassetid://2572157833",
-                    Duration = 10
-                }
-            )
+				game:GetService("StarterGui"):SetCore(
+				"SendNotification",
+				{
+					Title = "SasSquatch Presents To You:",
+					Text = "You are now in the Whitelister!",
+					Icon = "rbxassetid://2572157833",
+					Duration = 10
+				}
+				)
 
-            wait(3)
+				wait(3)
 
-            local Rayfield = nil
-            if isfile("UI/ArrayField.lua") then
-                Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
-            else
-                Rayfield =
-                    loadstring(
-                    game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field")
-                )()
-            end
+				local Rayfield = nil
+				if isfile("UI/ArrayField.lua") then
+				Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
+			else
+				Rayfield =
+					loadstring(
+						game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field")
+					)()
+			end
 
-            -- local Rayfield = (isfile("UI/ArrayField.lua") and loadstring(readfile("UI/ArrayField.lua"))()) or loadstring(game:HttpGet("https://raw.githubusercontent.com/Rafacasari/ArrayField/main/v2.lua"))()
-            assert(Rayfield, "Oopps! Rayfield has not been loaded. Maybe try re-joining?")
+				-- local Rayfield = (isfile("UI/ArrayField.lua") and loadstring(readfile("UI/ArrayField.lua"))()) or loadstring(game:HttpGet("https://raw.githubusercontent.com/Rafacasari/ArrayField/main/v2.lua"))()
+				assert(Rayfield, "Oopps! Rayfield has not been loaded. Maybe try re-joining?")
 
-            getgenv().SecureMode = true
-            getgenv().DisableArrayfieldAutoLoad = true
+				getgenv().SecureMode = true
+				getgenv().DisableArrayfieldAutoLoad = true
 
-            -- Detect if the script has executed by AutoExec
-            local AutoExecuted = false
-            if not game:IsLoaded() then
-                AutoExecuted = true
-            end
+				-- Detect if the script has executed by AutoExec
+				local AutoExecuted = false
+				if not game:IsLoaded() then
+				AutoExecuted = true
+			end
 
-            repeat
-                task.wait()
-            until game.PlaceId ~= nil
-            if not game:IsLoaded() then
-                game.Loaded:Wait()
-            end
+				repeat
+				task.wait()
+			until game.PlaceId ~= nil
+				if not game:IsLoaded() then
+				game.Loaded:Wait()
+			end
 
-            --//-------------- SERVICES ----------------//*
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            local Players = game:GetService("Players")
-            local LocalPlayer = Players.LocalPlayer
-            local HttpService = game:GetService("HttpService")
-            local InputService = game:GetService("UserInputService")
-            local RunService = game:GetService("RunService")
-            local ContentProvider = game:GetService("ContentProvider")
+				--//-------------- SERVICES ----------------//*
+				local ReplicatedStorage = game:GetService("ReplicatedStorage")
+				local Players = game:GetService("Players")
+				local LocalPlayer = Players.LocalPlayer
+				local HttpService = game:GetService("HttpService")
+				local InputService = game:GetService("UserInputService")
+				local RunService = game:GetService("RunService")
+				local ContentProvider = game:GetService("ContentProvider")
 
-            --//*--------- GLOBAL VARIABLES -----------//*
-            local ScriptIsCurrentlyBusy = false
-            local Character = nil
-            local Humanoid = nil
-            local HumanoidRootPart = nil
-            local CurrentWorld = ""
-            local CurrentPosition = nil
+				--//*--------- GLOBAL VARIABLES -----------//*
+				local ScriptIsCurrentlyBusy = false
+				local Character = nil
+				local Humanoid = nil
+				local HumanoidRootPart = nil
+				local CurrentWorld = ""
+				local CurrentPosition = nil
 
-            local Settings_DisableRendering = true
+				local Settings_DisableRendering = true
 
-            local Webhook_Enabled = true
-            local Webhook_URL =
-                "https://webhook.lewisakura.moe/api/webhooks/1155857406035755008/g3BxUlLjZMJq5OWyPpAUXqsD3cnwO8UkQtKJkudprDE_yS9rvlPpA7uC-LaYR1uZ8hbj/queue"
+				local Webhook_Enabled = true
+				local Webhook_URL =
+				"https://webhook.lewisakura.moe/api/webhooks/1155857406035755008/g3BxUlLjZMJq5OWyPpAUXqsD3cnwO8UkQtKJkudprDE_yS9rvlPpA7uC-LaYR1uZ8hbj/queue"
 
-            --Replace your link with the link in the Quotes.
+				--Replace your link with the link in the Quotes.
 
-            local MessageData = {
-                ["content"] = "Hoi, A user executed Lucky Blessing!"
-            }
+				local MessageData = {
+					["content"] = "Hoi, A user executed Lucky Blessing!"
+				}
 
-            MessageData = HttpService:JSONEncode(MessageData)
-            --We used JSONEncode to convert the Lua Table into a Json String
+				MessageData = HttpService:JSONEncode(MessageData)
+				--We used JSONEncode to convert the Lua Table into a Json String
 
-            HttpService:PostAsync(Webhook_URL, MessageData)
+				HttpService:PostAsync(Webhook_URL, MessageData)
 
-            LocalPlayer.CharacterAdded:Connect(
-                function(char)
-                    Character = char
-                    Humanoid = Character:WaitForChild("Humanoid")
-                    HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
-                end
-            )
+				LocalPlayer.CharacterAdded:Connect(
+					function(char)
+						Character = char
+						Humanoid = Character:WaitForChild("Humanoid")
+						HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+					end
+				)
 
-            --//*--------- CORE SCRIPT -----------//*
+				--//*--------- CORE SCRIPT -----------//*
 
-            local Window =
-                Rayfield:CreateWindow(
-                {
-                    Name = SCRIPT_NAME .. " " .. SCRIPT_VERSION,
-                    LoadingTitle = "Sas Hub ''Premium DWinter Script''",
-                    LoadingSubtitle = "Made by alot of people",
-                    ConfigurationSaving = {
-                        Enabled = true,
-                        FolderName = "Ry", -- Create a custom folder for your hub/game
-                        FileName = "Raccoon Hub"
-                    },
-                    Discord = {
-                        Enabled = true,
-                        Invite = "HvWhajxV", -- The Discord invite code, do not include discord.gg/
-                        RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-                    },
-                    KeySystem = true, -- Set this to true to use our key system
-                    KeySettings = {
-                        Title = "The key system",
-                        Subtitle = "key is Skill issue",
-                        Note = "Fuck Skids -Sasquatch_htv - Agreed By Walter White",
-                        SaveKey = true,
-                        GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-                        Key = "Skill issue"
-                    }
-                }
-            )
+				local Window =
+				Rayfield:CreateWindow(
+					{
+						Name = SCRIPT_NAME .. " " .. SCRIPT_VERSION,
+						LoadingTitle = "Sas Hub ''Premium DWinter Script''",
+						LoadingSubtitle = "Made by alot of people",
+						ConfigurationSaving = {
+							Enabled = true,
+							FolderName = "Ry", -- Create a custom folder for your hub/game
+							FileName = "Raccoon Hub"
+						},
+						Discord = {
+							Enabled = true,
+							Invite = "HvWhajxV", -- The Discord invite code, do not include discord.gg/
+							RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+						},
+						KeySystem = true, -- Set this to true to use our key system
+						KeySettings = {
+							Title = "The key system",
+							Subtitle = "key is Skill issue",
+							Note = "Fuck Skids -Sasquatch_htv - Agreed By Walter White",
+							SaveKey = true,
+							GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+							Key = "Skill issue"
+						}
+					}
+				)
 
-            --- Rayfield Old Tab Layout
-            Rayfield:ToggleOldTabStyle(true)
+				--- Rayfield Old Tab Layout
+				Rayfield:ToggleOldTabStyle(true)
 
-            Rayfield:Notify(
-                {
-                    Title = "Key System",
-                    Content = "By Getting The Key System, You accept to our that you will be mauled by 4 bears at 14/02/24",
-                    Duration = 6.5,
-                    Image = 6022668883,
-                    Actions = {
-                        -- Notification Buttons
-                        Ignore = {
-                            Name = "Okay, i got it",
-                            Callback = function()
-                                warn("The user Replied, Okay!")
-                            end
-                        }
-                    }
-                }
-            )
+				Rayfield:Notify(
+					{
+						Title = "Key System",
+						Content = "By Getting The Key System, You accept to our that you will be mauled by 4 bears at 14/02/24",
+						Duration = 6.5,
+						Image = 6022668883,
+						Actions = {
+							-- Notification Buttons
+							Ignore = {
+								Name = "Okay, i got it",
+								Callback = function()
+									warn("The user Replied, Okay!")
+								end
+							}
+						}
+					}
+				)
 
 
 
-            local Tab = Window:CreateTab("Main Tab", 6026568198)
+				local Tab = Window:CreateTab("Main Tab", 6026568198)
 
-            -- local Section = Tab:CreateSection("t")
-            --// Functions
+				-- local Section = Tab:CreateSection("t")
+				--// Functions
 
-            local windowSettings = Tab:CreateSection("The goodies")
+				local windowSettings = Tab:CreateSection("The goodies")
 
-            Tab:CreateButton(
-                {
-                    Name = "Ducksy Dragon",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/NewDucksyDragonStyle"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Ducksy Dragon",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/NewDucksyDragonStyle"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Sugarcoat it(Use a counter :3",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/sugaercoat_it%20(1).lua"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Sugarcoat it(Use a counter :3",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/sugaercoat_it%20(1).lua"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Custom UI",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Custom_UI.lua"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Custom UI",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Custom_UI.lua"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Yakuza 0 style icon",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Style_Icons%20(1).lua"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Yakuza 0 style icon",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Style_Icons%20(1).lua"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Akiyama on a budget",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Akiyama_on_Budget.txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Akiyama on a budget",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Akiyama_on_Budget.txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Akiyama on a budget",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Akiyama_on_Budget.txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Akiyama on a budget",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Akiyama_on_Budget.txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Cobra kai",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/COBRA_KAI.txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Cobra kai",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/COBRA_KAI.txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Dizzy Style",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Dizzy%20style"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Dizzy Style",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Dizzy%20style"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Ghost style",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/GHOST_STYLE_BROKEN_1%20(1).txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Ghost style",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/GHOST_STYLE_BROKEN_1%20(1).txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Kaj Dragon",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Kaj%20Dragon"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Kaj Dragon",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Kaj%20Dragon"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "MadnessMyh Dragon",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Madnessmyth_Dragon.lua"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "MadnessMyh Dragon",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Madnessmyth_Dragon.lua"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Noob x Pot",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Noob_x_pot.txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Noob x Pot",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Noob_x_pot.txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Rollenz",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Rollenz_Style%20(1).txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Rollenz",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Rollenz_Style%20(1).txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Sawaii",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Sawaii_Style_1.txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Sawaii",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Sawaii_Style_1.txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Serado",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Serado"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Serado",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Serado"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "DODsum(Dragon)",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/dodsum"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "DODsum(Dragon)",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/dodsum"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Excessive blood",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/excessiveblood"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Excessive blood",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/excessiveblood"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Kiryu morph",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/morph%20mod%20(1).txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Kiryu morph",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/morph%20mod%20(1).txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Pheonix",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/phoenix_1.txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Pheonix",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/phoenix_1.txt"
+								)
+							)()
+						end
+					}
+				)
 
-            Tab:CreateButton(
-                {
-                    Name = "Shakedown",
-                    Callback = function()
-                        loadstring(
-                            game:HttpGet(
-                                "https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/shakedown%20(1).txt"
-                            )
-                        )()
-                    end
-                }
-            )
+				Tab:CreateButton(
+					{
+						Name = "Shakedown",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/shakedown%20(1).txt"
+								)
+							)()
+						end
+					}
+				)
+				
+				Tab:CreateButton(
+					{
+						Name = "Vulcan",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/vulcan.txt"
+								)
+							)()
+						end
+					}
+				)
+				
+				Tab:CreateButton(
+					{
+						Name = "Reverse_Fisticuffs",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/iceflavoreddango/dango-leaks/main/Reverse_Fisticuffs.txt"
+								)
+							)()
+						end
+					}
+				)
+				
+				local settingsTab = Window:CreateTab("Settings", 13075268290)
 
+				local windowSettings = settingsTab:CreateSection("General Options", false, false, "13080063021")
+
+				local UIKeybind = settingsTab:CreateSection("Hide/Unhide UI Keybind", false)
+				local Keybind =
+				settingsTab:CreateKeybind(
+					{
+						Name = "UI Keybind",
+						CurrentKeybind = "Insert",
+						HoldToInteract = false,
+						Flag = "Keybind1",
+						SectionParent = UIKeybind, -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+						Callback = function(Keybind)
+							if Hidden then
+							Hidden = false
+							Unhide()
+						else
+							if not SearchHided then
+								spawn(CloseSearch)
+							end
+							Hidden = true
+							Hide()
+						end
+						end
+					}
+				)
+
+				settingsTab:CreateToggle(
+					{
+						Name = "Compact Mode",
+						CurrentValue = false,
+						Flag = "Settings_CompactMode",
+						SectionParent = windowSettings,
+						Callback = function(value)
+							Rayfield:ToggleOldTabStyle(not value)
+						end
+					}
+				)
+
+				settingsTab:CreateToggle(
+					{
+						Name = "Enable Rendering",
+						CurrentValue = true,
+						Flag = "Settings_DisableRendering",
+						SectionParent = windowSettings,
+						Callback = function(value)
+							game:GetService("RunService"):Set3dRenderingEnabled(value)
+						end
+					}
+				)
+
+				settingsTab:CreateButton(
+					{
+						Name = "Destroy UI",
+						Callback = function()
+							Rayfield:Destroy()
+						end
+					}
+				)
+
+				settingsTab:CreateButton(
+					{
+						Name = "Unlock Fps",
+						Callback = function()
+							setfpscap(1000)
+						end
+					}
+				)
+
+				local windowSettings =
+				settingsTab:CreateSection("Netless", false, false, "rbxthumb://type=Asset&id=5107182114&w=150&h=1501")
+
+				local Button =
+				settingsTab:CreateButton(
+					{
+						Name = "Toggle Netless",
+						Callback = function()
+							for i, v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+							if v:IsA("BasePart") and v.Name ~= "HumanoidRootPart" then
+								game:GetService("RunService").Heartbeat:connect(
+								function()
+									v.Velocity = Vector3.new(0, 35, 0)
+									wait(0.5)
+								end
+								)
+							end
+						end
+
+							game:GetService("StarterGui"):SetCore(
+							"SendNotification",
+							{
+								Title = "Notification",
+								Text = "Netless activated",
+								Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"
+							}
+							)
+							Duration = 16
+							loadstring(
+								game:HttpGet(
+									("https://raw.githubusercontent.com/KattWasTaken/pepsi_hub/main/netless.txt"),
+									true
+								)
+							)()
+						end
+					}
+				)
+
+				local FTab = Window:CreateTab("Facts Tab", 13075637275)
+
+				local windowSettings = FTab:CreateSection("Facts")
+
+				local Paragraph =
+				FTab:CreateParagraph(
+					{
+						Title = "The Black Death (also known as the Pestilence, the Great Mortality or the Plague)",
+						Content = "Was a bubonic plague pandemic occurring in Western Eurasia and North Africa from 1346 to 1353. It is the most fatal pandemic recorded in human history, causing the deaths of 75–200 million people, peaking in Europe from 1347 to 1351. Bubonic plague is caused by the bacterium Yersinia pestis spread by fleas, but during the Black Death it probably also took a secondary form, spread by person-to-person contact via aerosols, causing pneumonic plague. The Black Death was the beginning of the second plague pandemic. The plague created religious, social and economic upheavals, with profound effects on the course of European history. The origin of the Black Death is disputed. Genetic analysis points to the evolution of Yersinia pestis in the Tian Shan mountains on the border between Kyrgyzstan and China 2,600 years ago. The immediate territorial origins of the Black Death and its outbreak remains unclear with some pointing towards Central Asia, China, the Middle East, and Europe. The pandemic was reportedly first introduced to Europe during the siege of the Genoese trading port of Kaffa in Crimea by the Golden Horde army of Jani Beg in 1347. From Crimea, it was most likely carried by fleas living on the black rats that travelled on Genoese ships, spreading through the Mediterranean Basin and reaching North Africa, Western Asia, and the rest of Europe via Constantinople, Sicily, and the Italian Peninsula. There is evidence that once it came ashore, the Black Death mainly spread from person-to-person as pneumonic plague, thus explaining the quick inland spread of the epidemic, which was faster than would be expected if the primary vector was rat fleas causing bubonic plague. In 2022, it was discovered that there was a sudden spread may not have been due to Mongol conquests in the 14th century, as previously speculated."
+					}
+				)
+
+				local Paragraph =
+				FTab:CreateParagraph(
+					{
+						Title = "The Vietnam War (also known by other names)",
+						Content = "was a conflict in Vietnam, Laos, and Cambodia from 1 November 1955 to the fall of Saigon on 30 April 1975. It was the second of the Indochina Wars and was officially fought between North Vietnam and South Vietnam. The north was supported by the Soviet Union, China, and other communist states, while the south was supported by the United States and other anti-communist allies. The war is widely considered to be a Cold War-era proxy war. It lasted almost 20 years, with direct U.S. involvement ending in 1973. The conflict also spilled over into neighboring states, exacerbating the Laotian Civil War and the Cambodian Civil War, which ended with all three countries officially becoming communist states by 1976. With the defeat of the French Union in the First Indochina War and its acceptance of military withdrawal from Vietnam pursuant to the Geneva peace agreement on Vietnam that took effect on 23 July 1954, the country gained the independence from France but was divided into two military gathering areas: the Viet Minh took control of North Vietnam, while the U.S. assumed financial and military support for the South Vietnamese state. The Viet Cong (VC), a South Vietnamese common front under the direction of the north, initiated a guerrilla war in the south. The People's Army of Vietnam (PAVN), also known as the North Vietnamese Army (NVA), engaged in more conventional warfare with U.S. and Army of the Republic of Vietnam (ARVN). North Vietnam invaded Laos in 1958, establishing the Ho Chi Minh Trail to supply and reinforce the VC. By 1963, the north had sent 40,000 soldiers to fight in the south. involvement increased under President John F. Kennedy, from just under a thousand military advisors in 1959 to 23,000 by 1964. Following the Gulf of Tonkin incident in August 1964, the U.S. Congress passed a resolution that gave President Lyndon B. Johnson broad authority to increase U.S. military presence in Vietnam, without a formal declaration of war. Johnson ordered the deployment of combat units for the first time, and dramatically increased the number of American troops to 184,000.[62] U.S. and South Vietnamese forces relied on air superiority and overwhelming firepower to conduct search and destroy operations, involving ground forces, artillery, and airstrikes. The U.S. also conducted a large-scale strategic bombing campaign against North Vietnam and continued significantly building up its forces, despite little progress being made. In 1968, North Vietnamese forces launched the Tet Offensive; though it was a military defeat for them, it became a political victory, as it caused U.S. domestic support for the war to fade. By the end of the year, the VC held little territory and were sidelined by the PAVN. In 1969, North Vietnam declared the Provisional Revolutionary Government of the Republic of South Vietnam. Operations crossed national borders, and the U.S. bombed North Vietnamese supply routes in Laos and Cambodia. The 1970 deposing of the Cambodian monarch, Norodom Sihanouk, resulted in a PAVN invasion of the country (at the request of the Khmer Rouge), and then a U.S.-ARVN counter-invasion, escalating the Cambodian Civil War. After the election of Richard Nixon in 1969, a policy of 'Vietnamization' began, which saw the conflict fought by an expanded ARVN, while U.S. forces withdrew in the face of increasing domestic opposition. U.S. ground forces had largely withdrawn by early 1972, and their operations were limited to air support, artillery support, advisors, and materiel shipments. The Paris Peace Accords of January 1973 saw all U.S. forces withdrawn, accords were broken almost immediately, and fighting continued for two more years. Phnom Penh fell to the Khmer Rouge on 17 April 1975, while the 1975 spring offensive saw the Fall of Saigon to the PAVN on 30 April, marking the end of the war. North and South Vietnam were reunified on 2 July the following year."
+					}
+				)
+
+				local windowSettings = Tab:CreateSection("Raccoon Hub Modifier Misc")
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " FE Physics Gun",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									("https://raw.githubusercontent.com/RyAtlasX/Roblox_Scripts/main/FE%20Physics%20Gun.lua"),
+									true
+								)
+							)()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " VAPE V4",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/VAPE%20V4%20%5Bbedwar%5D"
+								)
+							)()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Proton Free / Proton Admin",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Proton%20Free.lua"
+								)
+							)()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Infinite Yield v5.9.3",
+						Callback = function()
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))(
+
+							)
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " CMD X v1.9.9F",
+						Callback = function()
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/CMD-X"))()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Localscript Anti Kick",
+						Callback = function()
+							loadstring(
+								game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti%20Kick.lua")
+							)()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Anti Fling",
+						Callback = function()
+							loadstring(
+								game:HttpGet("https://raw.githubusercontent.com/KattWasTaken/pepsi_hub/main/AntiFling")
+							)()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Hydroxide",
+						Callback = function()
+							loadstring(
+								game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Hydroxide")
+							)()
+						end
+					}
+				)
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Orca v1.1.1",
+						Callback = function()
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Orca"))(
+
+							)
+						end
+					}
+				)
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Domain X v1.96",
+						Callback = function()
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/fortnitemodder/DomainX/main/Source"))(
+
+							)
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Eclipse Hub v0.88",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/RyAtlasX/Roblox_Scripts/main/Eclipse%20hub.lua"
+								)
+							)()
+						end
+					}
+				)
+
+				local Button =
+				MiscTab:CreateButton(
+					{
+						Name = " FE Front Flip",
+						Callback = function()
+							loadstring(game:HttpGet("https://pastebin.com/raw/8vFCxMWT"))() -- The function that takes place when the button is pressed
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " FE invis tool",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/invis2tool.lua"
+								)
+							)() -- The function that takes place when the button is pressed
+						end
+					}
+				)
+
+				local Button =
+				MiscTab:CreateButton(
+					{
+						Name = " Ry's Enhancer v0.1",
+						Callback = function()
+							Rayfield:Notify(
+								{
+									Title = "Crashing!",
+									Content = "If you are on Windows 7 or lower RAM, this could crash your game.",
+									Duration = 6.5,
+									Image = 4483362458,
+									Actions = {
+										-- Notification Buttons
+										Ignore = {
+											Name = "Okay!",
+											Callback = function()
+												warn("DIE!!!!!")
+											end
+										}
+									}
+								}
+							)
+							Rayfield:Notify(
+								{
+									Title = "Experience",
+									Content = "Use RoShade for a better experience. Click this button and the link will be copied into your clipboard",
+									Duration = 6.5,
+									Image = 4483362458,
+									Actions = {
+										-- Notification Buttons
+										Ignore = {
+											Name = "Install RoShade",
+											Callback = function()
+												setclipboard("https://roshade.com/")
+											end
+										}
+									}
+								}
+							)
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/FUCKING%20SHADERS"
+								)
+							)()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " RTX | Shader",
+						Callback = function()
+							Rayfield:Notify(
+								{
+									Title = "Crashing!",
+									Content = "If you are on Windows 7 or lower RAM, this could crash your game.",
+									Duration = 6.5,
+									Image = 4483362458,
+									Actions = {
+										-- Notification Buttons
+										Ignore = {
+											Name = "Okay!",
+											Callback = function()
+												print("The user tapped Okay!")
+											end
+										}
+									}
+								}
+							)
+							Rayfield:Notify(
+								{
+									Title = "Experience",
+									Content = "Use RoShade for a better experience. Click this button and the link will be copied into your clipboard",
+									Duration = 6.5,
+									Image = 4483362458,
+									Actions = {
+										-- Notification Buttons
+										Ignore = {
+											Name = "Install RoShade",
+											Callback = function()
+												setclipboard("https://roshade.com/")
+											end
+										}
+									}
+								}
+							)
+							loadstring(
+								game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/RTX.lua")
+							)()
+						end
+					}
+				)
+
+				local Button =
+				Tab:CreateButton(
+					{
+						Name = " Self Moderator",
+						Callback = function()
+							loadstring(
+								game:HttpGet(
+									"https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Fake%20Self%20Ban.lua"
+								)
+							)() -- The function that takes place when the button is pressed
+						end
+					}
+				)
+
+				local Button =
+				MiscTab:CreateButton(
+					{
+						Name = " Dabbing Animation",
+						Callback = function()
+							loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-FE-Dab-8883"))()
+						end
+					}
+				)
+				local Button =
+				MiscTab:CreateButton(
+					{
+						Name = " Ball Rolling Animation | Patched",
+						Callback = function()
+							loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-FE-Ball-Roll-8881"))()
+						end
+					}
+				)
+				local Button =
+				MiscTab:CreateButton(
+					{
+						Name = " Fast animations",
+						Callback = function()
+							loadstring(game:HttpGet("https://pastebin.com/raw/8DKHE7sd"))() -- The function that takes place when the button is pressed
+						end
+					}
+				)
+
+				local Button =
+				MiscTab:CreateButton(
+					{
+						Name = "Bypass Proximity Prompt",
+						Callback = function()
+							local ProximityPromptService = game:GetService("ProximityPromptService")
+							function promptfired(p)
+								fireproximityprompt(p, 5000000)
+							end
+							ProximityPromptService.PromptButtonHoldBegan:Connect(promptfired)
+
+							if os.time() - StarterOsTime > HoldDuration - 0.1 then
+							-- it's valid
+						end
+
+							-- Hold Duration is 0.1
+							local StarterOsTime = os.time()
+
+							wait(0.1) -- This wait() is just here for replication sake. In reality you won't need it, just use the two events to get both of the os.times that are needed.
+
+							if os.time() - StarterOsTime > HoldDuration then
+							-- it's valid
+						end
+
+							game.Workspace.Shenoy6:SetPrimaryPartCFrame(CFrame.new(41.78, 3.985, 46.437))
+							-- The function that takes place when the button is pressed
+						end
+					}
+				)
+			end
+		}
+	)
