@@ -43,7 +43,7 @@ local Window = Rayfield:CreateWindow({
 		Note = "join the discord server for key [Dont be an asshole and steal the script. I'm talking to you JXCE]",
 		SaveKey = true,
 		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-		Key = "Decaying bitches 1.8"
+		Key = "Limbo Lust all gone."
 	}
 })
 
