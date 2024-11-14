@@ -1,4 +1,175 @@
-local githubURL = "https://raw.githubusercontent.com/sasquatchhtv/wl/main/wl"
+     local Rayfield = nil
+	if isfile("Ry/UI/DecayingField.lua") then
+		Rayfield = loadstring(readfile("Ry/UI/DecayingField.lua"))()
+	else
+		Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field"))()
+	end
+
+local Window = Rayfield:CreateWindow({
+	Name = "⚙ Optioning ⚙",
+	LoadingTitle = "⚠ A Warning to User ⚠",
+	LoadingSubtitle = "meow meow 🌠",
+	ConfigurationSaving = {
+		Enabled = false,
+	},
+	
+        Discord = {
+        	Enabled = true,
+        	Invite = "WMTNfGpx", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+        },
+	KeySystem = false, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Sassledge 🍀",
+		Subtitle = "Remade by Sasquatch. Original by.. Ry? ",
+		Note = "That 'Ry' is diffrent they are just the same name."
+	}
+})
+
+	coroutine.wrap(function() 
+		wait(0.5)
+		if not isfile("Ry/AcceptedTerms.txt") then 
+			Window:Prompt({
+				Title = 'Disclaimer',
+				SubTitle = 'Misuse of this script may result in penalties!',
+				Content = "I am not responsible for any harm caused by this tool, use at your own risk.",
+				Actions = {
+					
+					Accept = {
+						Name = "Ok",
+						Callback = function()
+							if not isfolder("Ry") then makefolder("Ry") end
+							writefile("Ry/AcceptedTerms.txt", "true")
+						end,
+						
+					}
+				}
+			})
+		end 
+	
+	end)()
+
+local Tab = Window:CreateTab("Optioning", 6022668955)
+local SecTab = Window:CreateTab("Other Scripts", 6022668883)
+local settingsTab = Window:CreateTab("Settings", 13075268290)
+
+local windowSettings = settingsTab:CreateSection("General Options", false, false, "13080063021")
+	
+	settingsTab:CreateToggle({
+		Name = "Compact Mode",
+		CurrentValue = true,
+		Flag = "Settings_CompactMode",
+		SectionParent = windowSettings,
+		Callback = function(value) 
+			Rayfield:ToggleOldTabStyle(not value)
+		end
+	})
+	
+
+    settingsTab:CreateButton({
+	Name = "Destroy UI",
+	Callback = function()
+		Rayfield:Destroy()
+    end,
+ })
+
+
+local Paragraph = SecTab:CreateParagraph({Title = "<b><font color=\"#d6d265\">Welcome!</font></b>", Content = "Are you looking for another Decaying Winter script? Well there is, choose the script you wan't to execute!"})
+local Label = SecTab:CreateLabel("If there isn't the script you wanted to find, we are sorry for the inconvenience.")
+
+local Button = SecTab:CreateButton({
+	Name = "SasSledge Free",
+	Callback = function()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/sasquatchhtv/Decayingbitches/main/DW-Script-1.75'),true))()
+    end,
+ })
+local Button = SecTab:CreateButton({
+	Name = "SasSledge Premium",
+	Callback = function()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/sasquatchhtv/SasDWPremium/main/Obfuscated'),true))()
+    end,
+ })
+ 
+local Paragraph = Tab:CreateParagraph({Title = "<b><font color=\"#0091ff\">Wait!</font></b>", Content = "Are you in the right game? If not, click this button to be teleported to Decaying Winter!"})
+ local Button = Tab:CreateButton({
+	Name = "Teleport",
+	Callback = function()
+		game:GetService("TeleportService"):Teleport(13438553315)
+    end,
+ })
+local Paragraph = Tab:CreateParagraph({Title = "<b><font color=\"#ff5462\">Warning!</font></b>", Content = "This script may get your account banned! Do you wish to continue?"})
+local Label = Tab:CreateLabel("<b><font color=\"#aa00ff\">Continue to execute the core script!</font></b>")
+
+ 
+local Label = Tab:CreateLabel("<b><font color=\"#00ff66\">Advice: Archive anything you think you're deserved for.</font></b>")
+
+local Button = Tab:CreateButton({
+	Name = "Quit",
+	Callback = function()
+		Rayfield:Destroy()
+    end,
+ })
+
+local Button = Tab:CreateButton({
+	Name = "Continue",
+	Callback = function()
+	
+	Rayfield:Destroy()
+	
+	if LB_LOADED and not _G.LB_DEBUG == true then
+	-- error("Lucky Blessing is already running!", 0)
+	return
+end
+
+pcall(function() getgenv().LB_LOADED = true end)
+
+COREGUI = game:GetService("CoreGui")
+if not game:IsLoaded() then
+	local notLoaded = Instance.new("Message")
+	notLoaded.Parent = COREGUI
+	notLoaded.Text = 'Lucky Blessing is waiting for the game to load'
+	game.Loaded:Wait()
+	notLoaded:Destroy()
+end
+
+--[[
+
+	Lucky Blessing By Ry © CC0 1.0 Decaying Winter (2023)
+
+	https://github.com/RyAtlasX
+
+]]
+
+--//*--------- CACHES -----------//*
+
+local loadstring, getgenv, setclipboard, tablefind, UserInputService = loadstring, getgenv, setclipboard, table.find, game:GetService("UserInputService")
+
+--//*--------- LOADED CHECKS -----------//*
+
+if LuckyBlessing or LuckyBlesser then
+    return
+end
+
+--//*--------- ENVIROMENTS -----------//*
+
+getgenv().LuckyBlessing = {}
+
+--//*--------- LOADED MODULES -----------//*
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Aimbot.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/WallHack.lua"))()
+
+--//*--------- ESP VARIBLES -----------//*
+
+local Aimbot, WallHack = getgenv().LuckyBlessing.Aimbot, getgenv().LuckyBlessing.WallHack
+local Parts, Fonts, TracersType = {"Head", "HumanoidRootPart", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg", "LeftHand", "RightHand", "LeftLowerArm", "RightLowerArm", "LeftUpperArm", "RightUpperArm", "LeftFoot", "LeftLowerLeg", "UpperTorso", "LeftUpperLeg", "RightFoot", "RightLowerLeg", "LowerTorso", "RightUpperLeg"}, {"UI", "System", "Plex", "Monospace"}, {"Bottom", "Center", "Mouse"}
+
+
+	local SCRIPT_NAME = "Sassledge Premium 🍀"
+    local SCRIPT_VERSION = "| v1" -- Hey Ry remember to change it before updating lmao
+
+	
+local githubURL = "https://raw.githubusercontent.com/Fardastic/WL/main/wl"
 local localPlayer = game.Players.LocalPlayer
 local allowedUserIds = {}
 
@@ -18,7 +189,7 @@ local function fetchAndParseGitHub()
         end
     else
         warn("Failed to fetch GitHub content")
-        player:Kick("failed to fetch whitelist")
+        player:Kick("Failed to fetch whitelist, try disable VPN / Firewalls?")
     end
 end
 
@@ -41,89 +212,93 @@ local isUserNotAllowed = not isUserAllowed(localPlayer)
 
 -- Additional security measures
 if isUserNotAllowed then
-    warn("not authorised")
-    local playerToKick = game.Players.LocalPlayer
+warn("User Is Not Authorized")
+local playerToKick = game.Players.LocalPlayer
 
-    -- Use the :Kick() method to kick the player with a message
-    playerToKick:Kick("You Have Been Permanently Banned.(Just kidding, You're Not Whitelisted)")
+-- Use the :Kick() method to kick the player with a message
+playerToKick:Kick("Failed to fetch Github contents. | You are not authorized to perform this action.")
 end
 
-game.StarterGui:SetCore(
-    "ChatMakeSystemMessage",
-    {
-        Text = "[Sas]: Oi, Solara is a lvl 3(?) executor meaning most shit wont work and require a lvl 6+ for most to wrok :3",
-        Color = Color3.new(0, 255, 169),
-        Font = Enum.Font.Code,
-        FontSize = Enum.FontSize.Size24
-    }
-)
 
-game.StarterGui:SetCore(
-    "ChatMakeSystemMessage",
-    {
-        Text = "Credit to Stefanuk12 on github for the Silent aim, no hunger/thirst and godmode.",
-        Color = Color3.new(0, 255, 169)
-    }
-)
 
-game.StarterGui:SetCore(
-    "ChatMakeSystemMessage",
-    {
-        Text = "Here the server invite link ''XeptBAHENu''",
-        Color = Color3.new(169, 255, 0),
-        Font = Enum.Font.SciFi,
-        FontSize = Enum.FontSize.Size24
-    }
-)
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    Text = "[Ry]: Hello there User! Please know that we are not responsible for any bans, we recommend you to use this on an alternate account, thank you for reading this.";
+    Color = Color3.new(0, 255, 169);
+    Font = Enum.Font.Code;
+    FontSize = Enum.FontSize.Size24;
+})
 
-game.StarterGui:SetCore(
-    "ChatMakeSystemMessage",
-    {
-        Text = "Enjoy!",
-        Color = Color3.new(0, 255, 0),
-        Font = Enum.Font.Fantasy,
-        FontSize = Enum.FontSize.Size24
-    }
-)
+    game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    Text = "Join Our Server https://dsc.gg/WMTNfGpx for more information!";
+    Color = Color3.new(169, 255, 0);
+    Font = Enum.Font.SciFi;
+    FontSize = Enum.FontSize.Size24;
+})
+    
+    game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    Text = "Enjoy Your Script User!";
+    Color = Color3.new(0, 255, 0);
+    Font = Enum.Font.Fantasy;
+    FontSize = Enum.FontSize.Size24;
+})
+    
+game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "Developers:";
+                Text = "Ry, Waltuh White, SasSquatch";
+                Duration = 6;
+            })
 
-game:GetService("StarterGui"):SetCore(
-    "SendNotification",
-    {
-        Title = "Developers:",
-        Text = "Ry, Waltuh White, SasSquatch, _petars_ and wolf",
-        Duration = 6
-    }
-)
+game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "Welcome to Our Wonderful creation!";
+                Text = "Thank you for using the script!!";
+                Duration = 6;
+            })
 
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "if You Enjoy This.";
+                Text = "Please leave a like on my Github!";
+                Icon = "https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=ImCherry511";
+                Duration = 6;
+            })
 
--- local Rayfield = (isfile("UI/ArrayField.lua") and loadstring(readfile("UI/ArrayField.lua"))()) or loadstring(game:HttpGet("https://raw.githubusercontent.com/Rafacasari/ArrayField/main/v2.lua"))()
-assert(Rayfield, "Oopps! Rayfield has not been loaded. Maybe try re-joining?")
+wait(3)
 
-getgenv().SecureMode = true
-getgenv().DisableArrayfieldAutoLoad = true
+game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "Lucky Blesser Presents To You:";
+                Text = "You are in the Whitelister!";
+                Icon = "rbxassetid://2572157833";
+                Duration = 10;
+            })
 
+    local Rayfield = nil
+	if isfile("UI/ArrayField.lua") then
+		Rayfield = loadstring(readfile("UI/ArrayField.lua"))()
+	else
+		Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Decaying%20Field"))()
+	end
+
+	-- local Rayfield = (isfile("UI/ArrayField.lua") and loadstring(readfile("UI/ArrayField.lua"))()) or loadstring(game:HttpGet("https://raw.githubusercontent.com/Rafacasari/ArrayField/main/v2.lua"))()
+	assert(Rayfield, "Oopps! Rayfield has not been loaded. Maybe try re-joining?") 
+
+	getgenv().SecureMode = true	
+	getgenv().DisableArrayfieldAutoLoad = true
+	
 -- Detect if the script has executed by AutoExec
 local AutoExecuted = false
-if not game:IsLoaded() then
-    AutoExecuted = true
-end
+if not game:IsLoaded() then AutoExecuted = true end
 
-repeat
-    task.wait()
-until game.PlaceId ~= nil
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-end
+repeat task.wait() until game.PlaceId ~= nil
+if not game:IsLoaded() then game.Loaded:Wait() end
 
 --//-------------- SERVICES ----------------//*
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local HttpService = game:GetService("HttpService")
-local InputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
+local InputService = game:GetService('UserInputService')
+local RunService = game:GetService('RunService')
 local ContentProvider = game:GetService("ContentProvider")
+local Lighting = game:GetService("Lighting")
 
 --//*--------- GLOBAL VARIABLES -----------//*
 local ScriptIsCurrentlyBusy = false
@@ -136,74 +311,108 @@ local CurrentPosition = nil
 local Settings_DisableRendering = true
 
 local Webhook_Enabled = true
-local Webhook_URL =
-    "https://webhook.lewisakura.moe/api/webhooks/1145966672386212001/3KTyfzQRQMHXSKXKMSZgjUnuQdK5m2Y4hv3N7CM65gy4u_l8ra2PvsIaeLlIsdKDREn8/queue"
+local Webhook_URL = "https://discord.com/api/webhooks/1155286687677681775/FsO6yahgtuvGKAUJ-e1WEzeNLJeo6_T0Ffm5PICGqG7Uua1BjcfCtM5DhbMhRQME0kZ0"
 
-LocalPlayer.CharacterAdded:Connect(
-    function(char)
-        Character = char
-        Humanoid = Character:WaitForChild("Humanoid")
-        HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
-    end
-)
+LocalPlayer.CharacterAdded:Connect(function(char) 
+	Character = char
+	Humanoid = Character:WaitForChild("Humanoid")
+	HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+end)
+
 
 --//*--------- CORE SCRIPT -----------//*
 
-local Window =
-    Rayfield:CreateWindow(
-    {
-        Name = "SasSledge DW Premium script",
-        LoadingTitle = "Sas Decaying Winter Script",
-        LoadingSubtitle = "Owned by Sasquatch_htv Contributed by Ry and fardastic.",
-        ConfigurationSaving = {
-            Enabled = false,
-            FolderName = nil, -- Create a custom folder for your hub/game
-            FileName = "1771717t26g276277g127t476t17t47t21g4g5g1261253672185"
-        },
+local Window = Rayfield:CreateWindow({
+	Name = SCRIPT_NAME .. " " .. SCRIPT_VERSION,
+	LoadingTitle = "Lucky 🍀",
+	LoadingSubtitle = "Made by Sasquacth  🌠",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = "Ry", -- Create a custom folder for your hub/game
+		FileName = "Sassledge" .. tostring(LocalPlayer.UserId)
+	},
         Discord = {
-            Enabled = true,
-            Invite = "sashub", -- The Discord invite code, do not include discord.gg/
-            RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        	Enabled = true,
+        	Invite = "WMTNfGpx", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
         },
-        KeySystem = true, -- Set this to true to use our key system
-        KeySettings = {
-            Title = "The key system",
-            Subtitle = "If your reading this your either whitelisted or your a skid smh!!",
-            Note = "Fuck poor people -Sasquatch_htv - Agreed By Walter White",
-            SaveKey = true,
-            GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-            Key = "Mankind is dead. Blood is fuel. Hell is full."
-        }
-    }
-)
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Lucky 🍀",
+		Subtitle = "Remade by Ry. Original by.. Ry? ",
+		Note = "These 'Ry' are diffrent they are just the same name.",
+		SaveKey = true,
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = "Mankind is dead. Blood is fuel. Hell is full."
+	}
+})
 
-coroutine.wrap(
-    function()
-        wait(0.5)
-        if not isfile("Ry/AcceptedTerms.txt") then
-            Window:Prompt(
-                {
-                    Title = "Disclaimer",
-                    SubTitle = "Misuse of this script may result in penalties!",
-                    Content = "I am not responsible for any harm caused by this tool, use at your own risk.",
-                    Actions = {
-                        Accept = {
-                            Name = "Ok",
-                            Callback = function()
-                                if not isfolder("Ry") then
-                                    makefolder("Ry")
-                                end
-                                writefile("Ry/AcceptedTerms.txt", "true")
-                            end
-                        }
-                    }
-                }
-            )
-        end
-    end
-)()
+--- Rayfield Old Tab Layout
+Rayfield:ToggleOldTabStyle(true)
 
-local Tab = Window:CreateTab("Modded perks", 10590477450)
+ Rayfield:Notify({
+   Title = "Key System",
+   Content = "By Getting The Key System, You accept to our Rules",
+   Duration = 6.5,
+   Image = 6022668883,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay, i got it",
+         Callback = function()
+         warn("The user Replied, Okay!")
+      end
+   },
+},
+})
+
+ Rayfield:Notify({
+   Title = "Note",
+   Content = "EVERYTHING HERE IS MODIFIED AND CONFIRMED - MODIFIED BY H.RY - DO NOT ATTEMPT TO SKID",
+   Duration = 6.5,
+   Image = 11401835376,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay.",
+         Callback = function()
+         warn("kk")
+      end
+   },
+},
+})
+
+ Rayfield:Notify({
+   Title = "Note",
+   Content = "{(DO NOT GO OVER OR PICK UP 1900 SCRAPS)}",
+   Duration = 6.5,
+   Image = 11401835376,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Alright, Sure",
+         Callback = function()
+         warn("kk")
+      end
+   },
+},
+})
+
+ Rayfield:Notify({
+   Title = "Note",
+   Content = "Original by Ry (https://discord.gg/2cVsQbwtNq) Remade by Ry (https://dsc.gg/rans)",
+   Duration = 6.5,
+   Image = 6023426915,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay, i got it",
+         Callback = function()
+         warn("The user Replied, Okay!")
+      end
+   },
+},
+})
+
+
+
+local Tab = Window:CreateTab("Main Tab", 6026568198)
 
 local windowSettings = Tab:CreateSection("Modified stuff / Slavages")
 
@@ -751,8 +960,11 @@ Tab:CreateButton(
         end
     }
 )
-Tab:CreateSection("Modified Perks")
-Tab:CreateLabel("Solara is a lvl 3 executor hence why most things are broken there")
+
+ Tab:CreateLabel("Dev Notes: Don't put everything too overpowered..")
+
+local modp = Tab:CreateSection("Modified Perks")
+
 Tab:CreateButton(
     {
         Name = "Left To Die (Damned)",
@@ -2086,790 +2298,413 @@ local Button =
     }
 )
 
-local Tab = Window:CreateTab("Item Spawn", 10590477450)
-local Section = Tab:CreateSection("Rations/Ammo (MAKE SURE YOU HAVE /THE AMMO YOUR SPAWNING)")
-local Button = Tab:CreateLabel("YOU MUST BE NEAR A WORKBENCH BECAUSE OF THE ANTI TP BS")
+Tab:CreateLabel("Craftable Items")
+
+local Guns = Tab:CreateSection("Guns")
+
+  local Button =
+        Tab:CreateButton(
+        {
+            Name = "Spawn AWP",
+            SectionParent = Guns,
+            Callback = function()
+                local workbench = workspace.Interactables:FindFirstChild("Workbench")
+                game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbenchblueprintAWMSniper"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+                wait(1.7)
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbench"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            end
+        }
+    )
+
+ local Button =
+        Tab:CreateButton(
+        {
+            Name = "Spawn ScarL",
+            SectionParent = Guns,
+            Callback = function()
+                local workbench = workspace.Interactables:FindFirstChild("Workbench")
+                game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbenchblueprintScarL"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+                wait(1.7)
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbench"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            end
+        }
+    )
+
+    local Button =
+        Tab:CreateButton(
+        {
+            Name = "Spawn ScarH",
+            SectionParent = Guns,
+            Callback = function()
+                local workbench = workspace.Interactables:FindFirstChild("Workbench")
+                game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbenchblueprintSubScar"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+                wait(1.7)
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbench"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            end
+        }
+    )
+
+    local Button =
+        Tab:CreateButton(
+        {
+            Name = "Spawn Hi Capa",
+            SectionParent = Guns,
+            Callback = function()
+                local workbench = workspace.Interactables:FindFirstChild("Workbench")
+                game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbenchblueprintSTIPistol"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+                wait(1.7)
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbench"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            end
+        }
+    )
+
+local Button = Tab:CreateButton({
+    Name = "Spawn Modded Pistol",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintMPistol",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+ local Button = Tab:CreateButton({
+    Name = "Spawn AK74",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSubAK",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn SKS",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSKS",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn MCX",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSubMCX",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn MPX",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSubMPX",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn FAMAS",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintFAMAS",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+ local Button = Tab:CreateButton({
+    Name = "Spawn AS Val",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintASVal",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+ local Button = Tab:CreateButton({
+    Name = "Spawn Tommy Gun",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintTSMG",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn Deagle (MARKVII)",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintDeagle",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ local Button = Tab:CreateButton({
+    Name = "Spawn RSASS",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintRSASS",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ local Button = Tab:CreateButton({
+    Name = "Spawn UMP",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintUMP",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+ local Button = Tab:CreateButton({
+    Name = "Spawn M60",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSubLMG",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+ local Button = Tab:CreateButton({
+    Name = "Spawn REDEEMER",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintMRVolver",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
 Tab:CreateButton(
     {
-        Name = "Spawn Light Ammo",
-        Callback = function()
-            local args = {
-                [1] = "Light",
-                [2] = 150,
-                [3] = false
-            }
-
-            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Heavy Ammo",
-        Callback = function()
-            local args = {
-                [1] = "Heavy",
-                [2] = 150,
-                [3] = false
-            }
-
-            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Short Ammo",
-        Callback = function()
-            local args = {
-                [1] = "Short",
-                [2] = 150,
-                [3] = false
-            }
-
-            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Long Ammo",
-        Callback = function()
-            local args = {
-                [1] = "Long",
-                [2] = 150,
-                [3] = false
-            }
-
-            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Medium Ammo",
-        Callback = function()
-            local args = {
-                [1] = "Medium",
-                [2] = 150,
-                [3] = false
-            }
-
-            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Small Ammo",
-        Callback = function()
-            local args = {
-                [1] = "Small",
-                [2] = 150,
-                [3] = false
-            }
-
-            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Shell Ammo",
-        Callback = function()
-            local args = {
-                [1] = "Shells",
-                [2] = 150,
-                [3] = false
-            }
-
-            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Ration: MRE",
-        Callback = function()
-            game:GetService("Workspace").ServerStuff.dropAmmo:FireServer("rations", "MRE")
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Ration: Bottle",
-        Callback = function()
-            game:GetService("Workspace").ServerStuff.dropAmmo:FireServer("rations", "Bottle")
-        end
-    }
-)
-
-local Section = Tab:CreateSection("Craftable firearms")
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Hi Capa",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSTIPistol"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Modded Pistol",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSUPMPistol"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn AJM",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintAJM"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn AKM",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSUPAK"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn RSASS",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintRSASS"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Modded Rifle",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintRifle"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn KSG",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintKSG"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Milbow",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintCPBow"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Section = Tab:CreateSection("Other firearms")
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn UMP",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintUMP"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn ScarL",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintScarL"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn ScarH",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSubScar"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Servo Gun(admin gun doesent work anymoer)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintServoGun"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn M60",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSubLMG"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn AWP",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintAWMSniper"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Normal Pistol",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintMPistol"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Deagle (MARKVII)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintDeagle"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn AK74",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSubAK"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn SKS(KYS pls)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSKS"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn MCX (idea by Minor9825)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSubMCX"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn MPX (idea by Suplyn)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSubMPX"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn FAMAS*FRENCH*",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintFAMAS"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn AS Val",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintASVal"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Mac 10",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintMac"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Tommy gun",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintTSMG"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn REDEEMER",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintMRVolver"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Avtomat",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintAvto"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Intervention(sniper)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintIntSniper"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Benelli",
+        Name = "Spawn Benelli",
+        SectionParent = Guns,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -2889,58 +2724,10 @@ local Button =
         end
     }
 )
-
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "spawn M249",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintFNLMG"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn AA12",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintAAShotgun"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn IZM (sniper) fuck the poor - walter white",
+        Name = "Spawn IZM",
+        SectionParent = Guns,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -2961,16 +2748,155 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton({
+    Name = "Spawn Intervention / Sniper",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintIntSniper",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+Tab:CreateButton({
+    Name = "Spawn M249",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintFNLMG",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn AKM",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSUPAK",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Milbow",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintCPBow",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+Tab:CreateButton({
+    Name = "Spawn AA12",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintAAShotgun",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+Tab:CreateButton({
+    Name = "Spawn Vector",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSubVector",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+Tab:CreateButton(
     {
-        Name = "spawn Milbow",
+        Name = "Spawn Avtomat",
+        SectionParent = Guns,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
             local args = {
                 [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintCPBow"
+                [2] = "workbenchblueprintAvto"
             }
 
             game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
@@ -2985,254 +2911,246 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton({
+    Name = "Spawn KSG",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintKSG",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+Tab:CreateButton({
+    Name = "Spawn AJM",
+    SectionParent = Guns,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintAJM",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+local stims = Tab:CreateSection("Stim Options")
+
+   local Button = Tab:CreateButton({
+    Name = "Spawn Hemostatic Stim",
+    SectionParent = stims,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintAdrStim",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Orange Stim",
+    SectionParent = stims,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSStim",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Blue Stim",
+    SectionParent = stims,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSPDStim",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Green Stim",
+    SectionParent = stims,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintDEFStim",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Red Stim",
+    SectionParent = stims,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintHStim",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Purple Stim",
+    SectionParent = stims,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintDStim",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Used Stim (Useless)",
+    SectionParent = stims,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintTStim",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+
+local melee = Tab:CreateSection("Melee Options")
+
+Tab:CreateButton({
+    Name = "Spawn Decimator",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintRBHammer",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+Tab:CreateButton(
     {
-        Name = "spawn Vector",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSubVector"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn KSG",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintKSG"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Section = Tab:CreateSection("Stims")
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Hemostatic stim",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintAdrStim"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn OrangeStim",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSStim"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn BlueStim",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSPDStim"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn GreenStim",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintDEFStim"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Red Stim",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintHStim"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn PurpleStim",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintDStim"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn UsedStim(admin item completely useless)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintTStim"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Section = Tab:CreateSection("Special teir melees")
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Decimator",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintRBHammer"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Reikgon hand",
+        Name = "Spawn Reikgon Hand",
+        SectionParent = melee,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3253,204 +3171,150 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Maria",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintNailedB"
-            }
+Tab:CreateButton({
+    Name = "Spawn Maria",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintNailedB",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
+Tab:CreateButton({
+    Name = "Spawn Exe sword",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintExecSword",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
+Tab:CreateButton({
+    Name = "Spawn Fire axe",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintFAxe",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
 
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Exe sword",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintExecSword"
-            }
+ 
+Tab:CreateButton({
+    Name = "Spawn BllHook",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintBHook",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
+Tab:CreateButton({
+    Name = "Bad Bat",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintBadBat",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
 
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Firerier axe",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintDFAxe"
-            }
+Tab:CreateButton({
+    Name = "Spawn Firerier Axe",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintDFAxe",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn BllHook",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintBHook"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "OH THE MISERY",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintBadBat"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Section = Tab:CreateSection("Other melees")
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Sledgehammer *BONK*",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSHammer"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Fire Axe",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintFAxe"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn LMAO Blade(Lameo/HyperLame)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintHyperlame"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
         Name = "Spawn Great Sword",
+        SectionParent = melee,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3470,34 +3334,11 @@ local Button =
         end
     }
 )
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Brass Knuckles fuck the poor - walter white",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintBKnuckles"
-            }
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
         Name = "Spawn Estoc",
+        SectionParent = melee,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3518,10 +3359,10 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "Spawn Specalist Knife(Karambit)",
+        Name = "Spawn Specalist Knife (Karambit)",
+        SectionParent = melee,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3542,10 +3383,10 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "spawn Halberd",
+        Name = "Spawn Halberd",
+        SectionParent = melee,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3566,16 +3407,61 @@ local Button =
     }
 )
 
-local Button =
+Tab:CreateButton({
+    Name = "Spawn Frying Pan (L4D2 Moment)",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintFPan",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+Tab:CreateButton({
+    Name = "Spawn SClaw",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSClaw",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
     Tab:CreateButton(
     {
-        Name = "Spawn DMusket(Decommised Musket)",
+        Name = "Spawn HyperLame",
+        SectionParent = melee,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
             local args = {
                 [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintDmusket"
+                [2] = "workbenchblueprintHyperlame"
             }
 
             game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
@@ -3590,16 +3476,16 @@ local Button =
     }
 )
 
-local Button =
     Tab:CreateButton(
     {
-        Name = "Spawn Frying Pan (L4D2 Moment)",
+        Name = "Spawn Brass Knuckles",
+        SectionParent = melee,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
             local args = {
                 [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintFPan"
+                [2] = "workbenchblueprintBKnuckles"
             }
 
             game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
@@ -3614,16 +3500,182 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Sledgehammer *BONK*",
+    SectionParent = melee,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintSHammer",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+local Heal = Tab:CreateSection("Healing Options")
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn Advanced IFAK",
+    SectionParent = Heal,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintFAid",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Pain killers",
+    SectionParent = Heal,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintPKillers",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+  local Button = Tab:CreateButton({
+    Name = "Spawn Crude Bandage",
+    SectionParent = Heal,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintCRBandage",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Spawn Armor",
+    SectionParent = Heal,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintAPack",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+ 
+  local Button = Tab:CreateButton({
+    Name = "Spawn Backpack",
+    SectionParent = Heal,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintBPack",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+ 
+Tab:CreateButton({
+    Name = "Spawn AntiB / Pain Killers v2",
+    SectionParent = Heal,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintIbuP",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+Tab:CreateButton(
     {
-        Name = "Spawn SClaw",
+        Name = "Spawn Splint",
+        SectionParent = Heal,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
             local args = {
                 [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSClaw"
+                [2] = "workbenchblueprintSplint"
             }
 
             game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
@@ -3637,156 +3689,132 @@ local Button =
         end
     }
 )
+ 
+ Tab:CreateButton(
+        {
+            Name = "Spawn Tourni",
+            SectionParent = Heal,
+            Callback = function()
+                local workbench = workspace.Interactables:FindFirstChild("Workbench")
+                game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbenchblueprintTourni"
+                }
 
-local Section = Tab:CreateSection("Healing/misc")
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+                wait(1.7)
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbench"
+                }
 
-local Button =
-    Tab:CreateButton(
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            end
+        }
+    )
+
+local Throw = Tab:CreateSection("Throwable Items")
+ 
+Tab:CreateButton({
+    Name = "Spawn Tear Gas",
+    SectionParent = Throw,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintTGas",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+ 
+ Tab:CreateButton({
+    Name = "Spawn Caltrops",
+    SectionParent = Throw,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintTCaltrop",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+
+        Tab:CreateButton(
+        {
+            Name = "Spawn M67 Grenade",
+            SectionParent = Throw,
+            Callback = function()
+                local workbench = workspace.Interactables:FindFirstChild("Workbench")
+                game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbenchblueprintMGrenade"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+                wait(1.7)
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbench"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            end
+        }
+    )
+
+        Tab:CreateButton(
+        {
+            Name = "Spawn Molotov",
+            SectionParent = Throw,
+            Callback = function()
+                local workbench = workspace.Interactables:FindFirstChild("Workbench")
+                game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbenchblueprintMolo"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+                wait(1.7)
+                local args = {
+                    [1] = workspace.Interactables.Workbench,
+                    [2] = "workbench"
+                }
+
+                game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            end
+        }
+    )
+
+Tab:CreateButton(
     {
-        Name = "spawn Advanced IFAK",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintFAid"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Pavises",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintCRPavise"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Pain killers",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintPKillers"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Crude Bandage",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintCRBandage"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Armor",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintAPack"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Backpack",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintBPack"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Steel Snares (fuck the poor) - walter white",
+        Name = "Spawn Steel Snares",
+        SectionParent = Throw,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3806,10 +3834,10 @@ local Button =
         end
     }
 )
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "Spawn Prox (fuck the poor) - walter white",
+        Name = "Spawn Proximity Mine",
+        SectionParent = Throw,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3829,10 +3857,10 @@ local Button =
         end
     }
 )
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "Spawn Punji (fuck the poor) - walter white",
+        Name = "Spawn Punji",
+        SectionParent = Throw,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3852,10 +3880,10 @@ local Button =
         end
     }
 )
-local Button =
-    Tab:CreateButton(
+ Tab:CreateButton(
     {
-        Name = "Spawn Remote Explosive (fuck the poor) - walter white",
+        Name = "Spawn Remote Explosive",
+        SectionParent = Throw,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -3876,131 +3904,10 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "spawn AntiB(pain killers 2.0)",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintIbuP"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Splint",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintSplint"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "spawn Tourni",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintTourni"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Section = Tab:CreateSection("Throwable")
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Tear Gas",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintTGas"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Caltrops",
-        Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintTCaltrop"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Spawn Throwing Axe (fuck the poor) - walter white",
+        Name = "Spawn Hunting Axe",
+        SectionParent = Throw,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -4020,10 +3927,11 @@ local Button =
         end
     }
 )
-local Button =
-    Tab:CreateButton(
+
+Tab:CreateButton(
     {
-        Name = "Spawn Impact Grenade (fuck the poor) - walter white",
+        Name = "Spawn Impact Grenade",
+        SectionParent = Throw,
         Callback = function()
             local workbench = workspace.Interactables:FindFirstChild("Workbench")
             game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
@@ -4044,1255 +3952,828 @@ local Button =
     }
 )
 
-local Button =
-    Tab:CreateButton(
+
+Tab:CreateButton({
+    Name = "Spawn Dynamite",
+    SectionParent = Throw,
+    Callback = function()
+        local workbench = workspace.Interactables:FindFirstChild("Workbench")
+        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbenchblueprintDynamite",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+        wait(1.7)
+        local args = {
+            [1] = workspace.Interactables.Workbench,
+            [2] = "workbench",
+        }
+        
+        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
+    end,
+ })
+
+
+local Tab = Window:CreateTab("Rations / Ammo", 13075651575)
+
+local Rat = Tab:CreateSection("MAKE SURE YOU HAVE ATLEAST 50 AMMO OF THE AMMO YOUR SPAWNING!")
+
+
+Tab:CreateButton(
     {
-        Name = "Spawn Dynamite",
+        Name = "Spawn Light Ammo",
+        SectionParent = Rat,
         Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
             local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintDynamite"
+                [1] = "Light",
+                [2] = 150,
+                [3] = false
             }
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
         end
     }
 )
 
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "Spawn M67 Grenade",
+        Name = "Spawn Heavy Ammo",
+        SectionParent = Rat,
         Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
             local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintMGrenade"
+                [1] = "Heavy",
+                [2] = 150,
+                [3] = false
             }
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
         end
     }
 )
 
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "Spawn Molotov",
+        Name = "Spawn Short Ammo",
+        SectionParent = Rat,
         Callback = function()
-            local workbench = workspace.Interactables:FindFirstChild("Workbench")
-            game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
             local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbenchblueprintMolo"
+                [1] = "Short",
+                [2] = 150,
+                [3] = false
             }
 
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-            wait(1.7)
-            local args = {
-                [1] = workspace.Interactables.Workbench,
-                [2] = "workbench"
-            }
-
-            game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
         end
     }
 )
 
-local Tab = Window:CreateTab("Others", 10590477450)
-local Button =
-    Tab:CreateButton(
+Tab:CreateButton(
     {
-        Name = "SOF tag",
+        Name = "Spawn Long Ammo",
+        SectionParent = Rat,
         Callback = function()
-            function Respawn()
-                workspace.ServerStuff.spawnPlayer:FireServer("respawncharacter")
-            end
+            local args = {
+                [1] = "Long",
+                [2] = 150,
+                [3] = false
+            }
 
-            function Hub()
-                workspace.ServerStuff.spawnPlayer:FireServer("hubbing")
-            end
+            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
+        end
+    }
+)
+Tab:CreateButton(
+    {
+        Name = "Spawn Medium Ammo",
+        SectionParent = Rat,
+        Callback = function()
+            local args = {
+                [1] = "Medium",
+                [2] = 150,
+                [3] = false
+            }
 
-            function Start(arg)
-                if arg == "Normal" then
-                    game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
-                elseif arg == "Ray" then
-                    game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
-                end
-            end
+            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
+        end
+    }
+)
+Tab:CreateButton(
+    {
+        Name = "Spawn Small Ammo",
+        SectionParent = Rat,
+        Callback = function()
+            local args = {
+                [1] = "Small",
+                [2] = 150,
+                [3] = false
+            }
 
-            function Spawn(Cords)
+            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
+        end
+    }
+)
+Tab:CreateButton(
+    {
+        Name = "Spawn Shell Ammo",
+        SectionParent = Rat,
+        Callback = function()
+            local args = {
+                [1] = "Shells",
+                [2] = 150,
+                [3] = false
+            }
+
+            workspace:WaitForChild("ServerStuff"):WaitForChild("dropAmmo"):FireServer(unpack(args))
+        end
+    }
+)
+
+local Foods = Tab:CreateSection("Foods")
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn Ration: MRE",
+    SectionParent = Foods,
+    Callback = function()
+        game:GetService("Workspace").ServerStuff.dropAmmo:FireServer("rations", "MRE")
+    end,
+ })
+ 
+  local Button = Tab:CreateButton({
+    Name = "Spawn Ration: Beans",
+    SectionParent = Foods,
+    Callback = function()
+        game:GetService("Workspace").ServerStuff.dropAmmo:FireServer("rations", "Beans")
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn Ration: Bottle",
+    SectionParent = Foods,
+    Callback = function()
+        game:GetService("Workspace").ServerStuff.dropAmmo:FireServer("rations", "Bottle")
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Spawn Ration: Soda",
+    SectionParent = Foods,
+    Callback = function()
+        game:GetService("Workspace").ServerStuff.dropAmmo:FireServer("rations", "Soda")
+    end,
+ })
+
+
+
+ local Tab = Window:CreateTab("Others / Fun", 6023426915)
+
+
+ local Troll = Tab:CreateSection("Trolling Options", true, true, "13080063021")
+
+
+Tab:CreateButton({
+    Name = "Teleport SledgeQueen",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/Sledgequeentp.lua", true))();
+        
+    end,
+ })
+Tab:CreateButton({
+    Name = "Teleport ALL Scavengers",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/tp-all-enemy-to-you-in-dw.lua", true))();
+        
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Server Crasher 2.0 (Spam click the button)",
+    Callback = function()
+        for i = 10,100 do
+            task.wait()
+            workspace.ServerStuff.deathPlay:FireServer()
+            task.wait()
+        end
+        
+    end,
+ })
+
+
+
+ local modify = Tab:CreateSection("In-Game Modifier", 13075651575)
+
+
+ local Button = Tab:CreateButton({
+    Name = "Main Menu",
+    Callback = function()
+        function Respawn()
+            workspace.ServerStuff.spawnPlayer:FireServer("respawncharacter")
+        end 
+        
+        function Hub()
+            workspace.ServerStuff.spawnPlayer:FireServer("hubbing")
+        end    
+        
+        function Start(arg)
+            if arg == "Normal" then
+                game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
+            elseif arg == "Ray" then
+                game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
+            end    
+        end
+        
+        function Spawn(Cords)
+            Respawn()
+            repeat task.wait() until not game.Players.LocalPlayer.Character:FindFirstChild("Outfit")
+            Hub()
+            Start("Normal")
+            repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("Outfit")
+            if Cords == "Match" then
+                game.Players.LocalPlayer.start.Value = "normal"
+                game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(18.777990341186523, -2.5860984325408936, -9.264251708984375)
+            elseif Cords == "HubA" then
+                game.Players.LocalPlayer.start.Value = "hubbing"
+                game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(-118.72508239746094, -22.03114128112793, 1088.935546875)
+            elseif Cords == "Respawn" then
+                game.Players.LocalPlayer.start.Value = "hubbing"
                 Respawn()
-                repeat
-                    task.wait()
-                until not game.Players.LocalPlayer.Character:FindFirstChild("Outfit")
-                Hub()
-                Start("Normal")
-                repeat
-                    task.wait()
-                until game.Players.LocalPlayer.Character:FindFirstChild("Outfit")
-                if Cords == "Match" then
-                    game.Players.LocalPlayer.start.Value = "normal"
-                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame =
-                        CFrame.new(18.777990341186523, -2.5860984325408936, -9.264251708984375)
-                elseif Cords == "HubA" then
-                    game.Players.LocalPlayer.start.Value = "hubbing"
-                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame =
-                        CFrame.new(-118.72508239746094, -22.03114128112793, 1088.935546875)
-                elseif Cords == "Respawn" then
-                    game.Players.LocalPlayer.start.Value = "hubbing"
-                    Respawn()
-                elseif Cords == "HubB" then
-                    game.Players.LocalPlayer.start.Value = ""
-                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame =
-                        CFrame.new(-118.72508239746094, -22.03114128112793, 1088.935546875)
-                end
-            end
-
-            Spawn("Match") --- Match (puts you in match with pvp), HubB (hub with pvp), HubA (hub without pvp), Respawn (puts you back into menu)
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Server crasher 2.0 (Spam click the button)",
-        Callback = function()
-            for i = 10, 1000 do
-                task.wait()
-                workspace.ServerStuff.deathPlay:FireServer()
-                task.wait()
+            elseif Cords == "HubB" then
+                game.Players.LocalPlayer.start.Value = ""
+                game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(-118.72508239746094, -22.03114128112793, 1088.935546875)
             end
         end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "esp [M TO REFRESH]",
-        Callback = function()
-            loadstring(
-                game:HttpGet(
-                    "https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/Decaying-Winter-Esp.lua",
-                    true
-                )
-            )()
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "teleport SledgeQueen",
-        Callback = function()
-            loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/Sledgequeentp.lua", true)
-            )()
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "teleport ALL Scavengers",
-        Callback = function()
-            loadstring(
-                game:HttpGet(
-                    "https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/tp-all-enemy-to-you-in-dw.lua",
-                    true
-                )
-            )()
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Menu (sends you to the main menu)",
-        Callback = function()
-            function Respawn()
-                workspace.ServerStuff.spawnPlayer:FireServer("respawncharacter")
-            end
-
-            function Hub()
-                workspace.ServerStuff.spawnPlayer:FireServer("hubbing")
-            end
-
-            function Start(arg)
-                if arg == "Normal" then
-                    game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
-                elseif arg == "Ray" then
-                    game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
-                end
-            end
-
-            function Spawn(Cords)
-                Respawn()
-                repeat
-                    task.wait()
-                until not game.Players.LocalPlayer.Character:FindFirstChild("Outfit")
-                Hub()
-                Start("Normal")
-                repeat
-                    task.wait()
-                until game.Players.LocalPlayer.Character:FindFirstChild("Outfit")
-                if Cords == "Match" then
-                    game.Players.LocalPlayer.start.Value = "normal"
-                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame =
-                        CFrame.new(18.777990341186523, -2.5860984325408936, -9.264251708984375)
-                elseif Cords == "HubA" then
-                    game.Players.LocalPlayer.start.Value = "hubbing"
-                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame =
-                        CFrame.new(-118.72508239746094, -22.03114128112793, 1088.935546875)
-                elseif Cords == "Respawn" then
-                    game.Players.LocalPlayer.start.Value = "hubbing"
-                    Respawn()
-                elseif Cords == "HubB" then
-                    game.Players.LocalPlayer.start.Value = ""
-                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame =
-                        CFrame.new(-118.72508239746094, -22.03114128112793, 1088.935546875)
-                end
-            end
-
-            Spawn("Respawn") --- Match (puts you in match with pvp), HubB (hub with pvp), HubA (hub without pvp), Respawn (puts you back into menu)
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "dupe loot [KILLS YOU, do not spam click]",
-        Callback = function()
-            for i = 1, 10 do
-                task.wait()
-                workspace.ServerStuff.deathPlay:FireServer()
-                task.wait()
-            end
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Control Scav interface (By: incorrectdecisions on discord)",
-        Callback = function()
-            loadstring(
-                game:HttpGet(
-                    "https://raw.githubusercontent.com/IncorrectDecisions/silver-octo-adventure/main/DW%20Control%20GUI.lua"
-                )
-            )()
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "hanger thoughts(press b)",
-        Callback = function()
-            local uis = game:GetService("UserInputService")
-
-            uis.InputBegan:Connect(
-                function(input, gameprocess)
-                    if gameprocess == true then
-                        return
-                    end
-
-                    if input.KeyCode == Enum.KeyCode.B then
-                        workspace.ServerStuff.applyGore:FireServer(
-                            "hangerPopup",
-                            game.Players.LocalPlayer.Character.PrimaryPart,
-                            nil
-                        )
-                        workspace.ServerStuff.applyGore:FireServer(
-                            "hangerPopup",
-                            game.Players.LocalPlayer.Character.PrimaryPart,
-                            nil
-                        )
-                        workspace.ServerStuff.applyGore:FireServer(
-                            "hangerPopup",
-                            game.Players.LocalPlayer.Character.PrimaryPart,
-                            nil
-                        )
-                        workspace.ServerStuff.applyGore:FireServer(
-                            "hangerPopup",
-                            game.Players.LocalPlayer.Character.PrimaryPart,
-                            nil
-                        )
-                        workspace.ServerStuff.applyGore:FireServer(
-                            "hangerPopup",
-                            game.Players.LocalPlayer.Character.PrimaryPart,
-                            nil
-                        )
-                        workspace.ServerStuff.applyGore:FireServer(
-                            "hangerPopup",
-                            game.Players.LocalPlayer.Character.PrimaryPart,
-                            nil
-                        )
-                    end
-                end
-            )
-        end
-    }
-)
-local Button =
-    Tab:CreateButton(
-    {
-        Name = "Music",
-        Callback = function()
-            local Library =
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-
-            local Window = Library.CreateLib("Sounds", "Serpent")
-
-            -- Tabs --
-
-            local Songs = Window:NewTab("Holdout")
-            local Gamemode = Window:NewTab("Gamemode")
-            local Theme = Window:NewTab("Theme")
-            local Events = Window:NewTab("Events")
-            local Traps = Window:NewTab("Trigger")
-            local Boss = Window:NewTab("Gabriel")
-            local Emperor = Window:NewTab("Emperor")
-            local Ilija = Window:NewTab("Ilija")
-            local AGENT = Window:NewTab("AGENT")
-            local Shadow = Window:NewTab("Reikgon")
-            local Settings = Window:NewTab("Settings")
-
-            -- Local --
-
-            local Play = game:GetService("Workspace").ServerStuff.playAudio
-
-            -- Holdout --
-
-            local Holdpot = Songs:NewSection("Boss Themes")
-
-            Holdpot:NewButton(
-                "Medieval",
-                "Knights Theme",
-                function()
-                    Play:FireServer({"songs", "holdout_bosses"}, "medieval", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Boss Themes",
-                            Text = "Playing - Knights Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Holdpot:NewButton(
-                "Zealot",
-                "Zealot Theme",
-                function()
-                    Play:FireServer({"songs", "holdout_bosses"}, "zealot", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Boss Themes",
-                            Text = "Playing - Zealot Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-            Holdpot:NewButton(
-                "Sickler",
-                "Sickler Theme",
-                function()
-                    Play:FireServer({"songs", "holdout_bosses"}, "sickler", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Boss Themes",
-                            Text = "Playing - Sickler Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-            Holdpot:NewButton(
-                "Sledge",
-                "Sledge Queen Theme",
-                function()
-                    Play:FireServer({"songs", "holdout_bosses"}, "sledge", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Boss Themes",
-                            Text = "Playing - Sledge Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-            Holdpot:NewButton(
-                "Yosef",
-                "Yosef Theme",
-                function()
-                    Play:FireServer({"songs", "holdout_bosses"}, "yosef", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Boss Themes",
-                            Text = "Playing - Yosef Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-            Holdpot:NewButton(
-                "Rhyer",
-                "Rhyer Theme",
-                function()
-                    Play:FireServer({"songs", "holdout_bosses"}, "rhyer", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Boss Themes",
-                            Text = "Playing - Rhyer Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-            Holdpot:NewButton(
-                "Bad",
-                "Bad Business Theme",
-                function()
-                    Play:FireServer({"songs", "holdout_bosses"}, "bad", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Boss Themes",
-                            Text = "Playing - Bad Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            -- Theme --
-
-            local Theme = Theme:NewSection("Theme")
-
-            Theme:NewButton(
-                "Scavfinal",
-                "ScavFinal Theme",
-                function()
-                    Play:FireServer({"songs"}, "scavfinal", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Theme",
-                            Text = "Playing - Scavfinal Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Theme:NewButton(
-                "Scavwars",
-                "Scavwars Theme",
-                function()
-                    Play:FireServer({"songs"}, "scavwar", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Theme",
-                            Text = "Playing - Scavwars Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Theme:NewButton(
-                "Final",
-                "This shit Dope",
-                function()
-                    Play:FireServer({"songs"}, "final", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Theme",
-                            Text = "Playing - Final Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Theme:NewButton(
-                "End Credits",
-                "Ending Credits Theme",
-                function()
-                    Play:FireServer({"songs"}, "unused2", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Theme",
-                            Text = "Playing - End Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Theme:NewButton(
-                "Unused",
-                "Unused Theme",
-                function()
-                    Play:FireServer({"songs"}, "unused1", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Theme",
-                            Text = "Playing - Unused Theme",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            -- Gamemode --
-
-            local Mode = Gamemode:NewSection("Random Themes")
-
-            Mode:NewButton(
-                "wartrack",
-                "wartrack",
-                function()
-                    Play:FireServer({"gamemode"}, "wartracl", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Random",
-                            Text = "Playing - wartrack",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Mode:NewButton(
-                "Bloodrush",
-                "Bloodrush",
-                function()
-                    Play:FireServer({"gamemode"}, "bloodrush", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Random",
-                            Text = "Playing - Bloodrush",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Mode:NewButton(
-                "GamemodeA",
-                "GamemodeA",
-                function()
-                    Play:FireServer({"gamemode"}, "gamemodeA", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Random",
-                            Text = "Playing - GamemodeA",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Mode:NewButton(
-                "GamemodeB",
-                "GamemodeB",
-                function()
-                    Play:FireServer({"gamemode"}, "gamemodeB", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Random",
-                            Text = "Playing - GamemodeB",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Mode:NewButton(
-                "GamemodeC",
-                "GamemodeC",
-                function()
-                    Play:FireServer({"gamemode"}, "gamemodeC", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Random",
-                            Text = "Playing - GamemodeC",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Mode:NewButton(
-                "Horn",
-                "Horn",
-                function()
-                    Play:FireServer({"gamemode"}, "horn", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Random",
-                            Text = "Playing - Horn",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            -- Events --
-
-            local Event = Events:NewSection("Events Sounds")
-
-            Event:NewButton(
-                "KillSwitch",
-                "KillSwitch",
-                function()
-                    Play:FireServer({"events", "survevents"}, "killswitch", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Events",
-                            Text = "Playing - KillSwitch",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Event:NewButton(
-                "Flareraid",
-                "Flareraid",
-                function()
-                    Play:FireServer({"events", "survevents"}, "flareraid", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Events",
-                            Text = "Playing - Flareraid",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Event:NewButton(
-                "Bloodrush",
-                "Bloodrush",
-                function()
-                    Play:FireServer({"events", "survevents"}, "bloodrush", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Events",
-                            Text = "Playing - Bloodrush",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Event:NewButton(
-                "Thunder",
-                "Thunder",
-                function()
-                    Play:FireServer({"events", "survevents"}, "thunder", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Events",
-                            Text = "Playing - Thunder",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Event:NewButton(
-                "Exotic",
-                "Exotic",
-                function()
-                    Play:FireServer({"events", "survevents"}, "exotic", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Events",
-                            Text = "Playing - Exotic",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            Event:NewButton(
-                "Monte",
-                "Monte",
-                function()
-                    Play:FireServer({"events", "survevents"}, "monte", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Events",
-                            Text = "Playing - Monte",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 4
-                        }
-                    )
-                end
-            )
-
-            -- Traps --
-
-            local Tr = Traps:NewSection("Trigger Sounds")
-
-            Tr:NewButton(
-                "Flare",
-                "Flare Trap",
-                function()
-                    Play:FireServer({"world_item"}, "trap_flare1", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Trigger",
-                            Text = "Triggering - Flare",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 1
-                        }
-                    )
-                end
-            )
-
-            Tr:NewButton(
-                "Flare2",
-                "Flare Trap2",
-                function()
-                    Play:FireServer({"world_item"}, "trap_flare2", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Trigger",
-                            Text = "Triggering - Flare2",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 1
-                        }
-                    )
-                end
-            )
-
-            Tr:NewButton(
-                "Dynamite",
-                "Dynamite Trap",
-                function()
-                    Play:FireServer({"world_item"}, "trap_fuse", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Trigger",
-                            Text = "Triggering - Flare",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 1
-                        }
-                    )
-                end
-            )
-
-            Tr:NewButton(
-                "Firebomb",
-                "Firebomb",
-                function()
-                    Play:FireServer({"world_item"}, "firebomb", workspace)
-                    game.StarterGui:SetCore(
-                        "SendNotification",
-                        {
-                            Title = "Trigger",
-                            Text = "Triggering - Firebomb",
-                            Icon = "rbxassetid://6833114846",
-                            Duration = 1
-                        }
-                    )
-                end
-            )
-
-            -- Boss --
-
-            local Boss = Boss:NewSection("Voicelines")
-
-            Boss:NewDropdown(
-                "Taunt",
-                "Taunt",
-                {"taunt_1", "taunt_2", "taunt_3", "taunt_4", "taunt_5", "taunt_6", "taunt_7", "taunt_8", "taunt_9"},
-                function(Select)
-                    Play:FireServer({"ai", "boss"}, Select, workspace)
-                end
-            )
-
-            Boss:NewDropdown(
-                "Hurt",
-                "Hurt",
-                {"hurt_1", "hurt_2", "hurt_3", "hurt_4"},
-                function(Hurt)
-                    Play:FireServer({"ai", "boss"}, Hurt, workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Big Hurt",
-                "Totally Moaning",
-                function()
-                    Play:FireServer({"ai", "boss"}, "big_hurt", workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Intro",
-                "Introduction",
-                function()
-                    Play:FireServer({"ai", "boss"}, "intro_1", workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Intro2",
-                "Introduction2",
-                function()
-                    Play:FireServer({"ai", "boss"}, "intro_2", workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Gameover",
-                "Gameover",
-                function()
-                    Play:FireServer({"ai", "boss"}, "game_over1", workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Gameover2",
-                "Gameover2",
-                function()
-                    Play:FireServer({"ai", "boss"}, "game_over2", workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Behold",
-                "Behold Power of An Angels",
-                function()
-                    Play:FireServer({"ai", "boss"}, "behold", workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Enough",
-                "Enough",
-                function()
-                    Play:FireServer({"ai", "boss"}, "enough", workspace)
-                end
-            )
-
-            Boss:NewButton(
-                "Woes",
-                "Woes",
-                function()
-                    Play:FireServer({"ai", "boss"}, "woes", workspace)
-                end
-            )
-
-            -- Emperor --
-
-            local Emp = Emperor:NewSection("Voicelines")
-
-            Emp:NewDropdown(
-                "Begin",
-                "Begin",
-                {"begin1", "begin2", "begin3"},
-                function(begin)
-                    Play:FireServer({"events", "emperor"}, begin, workspace)
-                end
-            )
-
-            Emp:NewDropdown(
-                "Blocked",
-                "Blocked",
-                {"blocked1", "blocked2", "blocked3", "blocked4", "blocked5"},
-                function(blocked)
-                    Play:FireServer({"events", "emperor"}, blocked, workspace)
-                end
-            )
-
-            Emp:NewDropdown(
-                "Chatter",
-                "Chatter",
-                {"chatter1", "chatter2", "chatter3", "chatter4", "chatter5"},
-                function(chat)
-                    Play:FireServer({"events", "emperor"}, chat, workspace)
-                end
-            )
-
-            Emp:NewDropdown(
-                "Confirm",
-                "Confirm",
-                {"confirm1", "confirm2", "confirm3", "confirm4", "confirm5"},
-                function(confirm)
-                    Play:FireServer({"events", "emperor"}, confirm, workspace)
-                end
-            )
-
-            Emp:NewDropdown(
-                "Lowhealth",
-                "Lowhealth",
-                {"lowhealth1", "lowhealth2", "lowhealth3"},
-                function(low)
-                    Play:FireServer({"events", "emperor"}, low, workspace)
-                end
-            )
-
-            -- Ilija --
-
-            local Ilija = Ilija:NewSection("Voicelines")
-
-            Ilija:NewDropdown(
-                "Arrive",
-                "Arrive",
-                {"arrive1", "arrive2", "arrive3"},
-                function(Arrive)
-                    Play:FireServer({"voices", "ilija", "arrive"}, Arrive, workspace)
-                end
-            )
-
-            Ilija:NewDropdown(
-                "Quip",
-                "Quip",
-                {"quip1", "quip2", "quip3", "quip4", "quip5"},
-                function(Quip)
-                    Play:FireServer({"voices", "ilija", "quip"}, Quip, workspace)
-                end
-            )
-
-            Ilija:NewDropdown(
-                "End",
-                "End",
-                {"end1", "end2", "end3"},
-                function(End)
-                    Play:FireServer({"voices", "ilija", "end"}, End, workspace)
-                end
-            )
-
-            Ilija:NewDropdown(
-                "Reload",
-                "Reload",
-                {"reload1", "reload2", "reload3", "reload4", "reload5", "reload6", "reload7", "reload8", "reload9"},
-                function(Reload)
-                    Play:FireServer({"voices", "ilija", "reload"}, Reload, workspace)
-                end
-            )
-
-            Ilija:NewDropdown(
-                "Shot",
-                "Shot",
-                {
-                    "shot1",
-                    "shot2",
-                    "shot3",
-                    "shot4",
-                    "shot5",
-                    "shot6",
-                    "shot7",
-                    "shot8",
-                    "shot9",
-                    "shot10",
-                    "shot11"
-                },
-                function(Shot)
-                    Play:FireServer({"voices", "ilija", "shot"}, Shot, workspace)
-                end
-            )
-
-            -- AGENT --
-
-            local Agen = AGENT:NewSection("AGENT Voicelines")
-
-            Agen:NewDropdown(
-                "Stormenter",
-                "Stormenter",
-                {"storm1", "storm2"},
-                function(storm)
-                    Play:FireServer({"AGENT", "stormenter"}, storm, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Stormleave",
-                "Stormleave",
-                {"storm1", "storm2"},
-                function(storm2)
-                    Play:FireServer({"AGENT", "stormleave"}, storm2, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "hostile",
-                "hostile",
-                {"hostile1", "hostile2", "hostile3", "hostile4", "hostile5", "hostile6", "hostile7", "hostile8"},
-                function(hostile)
-                    Play:FireServer({"AGENT", "hostile"}, hostile, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Heavy",
-                "Heavy",
-                {"heavy1", "heavy2"},
-                function(heavy)
-                    Play:FireServer({"AGENT", "heavy"}, heavy, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Join",
-                "Join",
-                {"join1", "join2", "join3"},
-                function(join)
-                    Play:FireServer({"AGENT", "join"}, join, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Left",
-                "Left",
-                {"left1", "left2", "left3"},
-                function(left)
-                    Play:FireServer({"AGENT", "left"}, left, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Down",
-                "Down",
-                {"down1", "down2"},
-                function(down)
-                    Play:FireServer({"AGENT", "down"}, down, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Hvt",
-                "Hvt",
-                {"hvt1", "hvt2", "hvt3"},
-                function(hvt)
-                    Play:FireServer({"AGENT", "hvt"}, hvt, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Lowhealth",
-                "Lowhealth",
-                {"lowhealth1", "lowhealth2", "lowhealth3"},
-                function(low)
-                    Play:FireServer({"AGENT", "lowhealth"}, low, workspace)
-                end
-            )
-
-            Agen:NewDropdown(
-                "Echo Start",
-                "Echo Start",
-                {"start1", "start2"},
-                function(storm)
-                    Play:FireServer({"AGENT", "echo_start"}, storm, workspace)
-                end
-            )
-
-            -- Shadow --
-
-            local Shadow = Shadow:NewSection("Reikgon Voices")
-
-            Shadow:NewButton(
-                "Sickler Scream",
-                "Alert",
-                function()
-                    Play:FireServer({"shadow"}, "alert", workspace)
-                end
-            )
-
-            Shadow:NewButton(
-                "Chainbreak",
-                "Chainbreak",
-                function()
-                    Play:FireServer({"shadow"}, "chainbreak", workspace)
-                end
-            )
-
-            Shadow:NewButton(
-                "Sickler Theme",
-                "Sickler Provoked Theme",
-                function()
-                    Play:FireServer({"shadow"}, "sickler_song", workspace)
-                end
-            )
-
-            Shadow:NewButton(
-                "Sickler Crying",
-                "Sickler Idle",
-                function()
-                    Play:FireServer({"shadow"}, "sickler_idle", workspace)
-                end
-            )
-
-            Shadow:NewDropdown(
-                "Sickler",
-                "Sickler Voice",
-                {"sickler_noise1", "sickler_noise2", "sickler_noise3"},
-                function(sickler)
-                    Play:FireServer({"shadow"}, sickler, workspace)
-                end
-            )
-
-            Shadow:NewLabel("Skinner")
-
-            Shadow:NewDropdown(
-                "Skinner",
-                "Skinner Voice",
-                {"skinner_noise1", "skinner_noise2", "skinner_noise3", "skinner_noise4", "skinner_noise5"},
-                function(skinner)
-                    Play:FireServer({"shadow"}, skinner, workspace)
-                end
-            )
-
-            Shadow:NewLabel("Hanger")
-
-            Shadow:NewDropdown(
-                "Hanger Alert",
-                "Hanger Alert",
-                {"alert1", "alert2", "alert3"},
-                function(hanger)
-                    Play:FireServer({"shadow", "hang"}, hanger, workspace)
-                end
-            )
-
-            Shadow:NewButton(
-                "Influence",
-                "influence",
-                function()
-                    Play:FireServer({"shadow", "hang"}, "influence1", workspace)
-                end
-            )
-
-            Shadow:NewButton(
-                "Influence2",
-                "influence2",
-                function()
-                    Play:FireServer({"shadow", "hang"}, "influence2", workspace)
-                end
-            )
-
-            Shadow:NewButton(
-                "Cast",
-                "Possessed Sound",
-                function()
-                    Play:FireServer({"shadow", "hang"}, "cast", workspace)
-                end
-            )
-
-            Shadow:NewButton(
-                "Resist",
-                "Out of Possessed",
-                function()
-                    Play:FireServer({"shadow", "hang"}, "resist", workspace)
-                end
-            )
-
-            Shadow:NewLabel("Hidden")
-
-            Shadow:NewButton(
-                "Attack",
-                "Hidden Attack Sound",
-                function()
-                    Play:FireServer({"events", "hiddenB"}, "attack", workspace)
-                end
-            )
-
-            Shadow:NewDropdown(
-                "Voicelines",
-                "Taunt",
-                {"taunt1", "taunt2", "taunt3", "taunt4"},
-                function(hidden)
-                    Play:FireServer({"events", "hiddenB"}, hidden, workspace)
-                end
-            )
-
-            -- Settings --
-
-            local Set = Settings:NewSection("Settings")
-
-            Set:NewKeybind(
-                "UI",
-                "UI Keybind",
-                Enum.KeyCode.End,
-                function()
-                    Library:ToggleUI()
-                end
-            )
-        end
-    }
-)
+        
+        Spawn("Respawn") --- Match (puts you in match with pvp), HubB (hub with pvp), HubA (hub without pvp), Respawn (puts you back into menu)
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Control Scav interface (lag)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/IncorrectDecisions/silver-octo-adventure/main/DW%20Control%20GUI.lua"))()
+    end,
+ })
+ local Button = Tab:CreateButton({
+    Name = "Hanger Thoughts (Keybind: B)",
+    Callback = function()
+        local uis = game:GetService("UserInputService")
+
+uis.InputBegan:Connect(function(input,gameprocess)
+    if gameprocess == true then return end
+
+    if input.KeyCode == Enum.KeyCode.B then
+workspace.ServerStuff.applyGore:FireServer("hangerPopup", game.Players.LocalPlayer.Character.PrimaryPart, nil)
+workspace.ServerStuff.applyGore:FireServer("hangerPopup", game.Players.LocalPlayer.Character.PrimaryPart, nil)
+workspace.ServerStuff.applyGore:FireServer("hangerPopup", game.Players.LocalPlayer.Character.PrimaryPart, nil)
+workspace.ServerStuff.applyGore:FireServer("hangerPopup", game.Players.LocalPlayer.Character.PrimaryPart, nil)
+workspace.ServerStuff.applyGore:FireServer("hangerPopup", game.Players.LocalPlayer.Character.PrimaryPart, nil)
+workspace.ServerStuff.applyGore:FireServer("hangerPopup", game.Players.LocalPlayer.Character.PrimaryPart, nil)
+end
+end)
+    end,
+ })
+
+
+ 
+  local Button = Tab:CreateButton({
+    Name = "Executor Functions Tester (Check Console After Clicking)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RyAtlasX/Script-Storages/main/Exect%20Tester.lua", true))();
+    end,
+ })
+
+
+ local Button = Tab:CreateButton({
+    Name = "Music / Theme Songs",
+    Callback = function()
+        
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+        
+        local Window = Library.CreateLib("Sounds", "Serpent")
+        
+        
+        -- Tabs --
+        
+        local Songs = Window:NewTab("Holdout")
+        local Gamemode = Window:NewTab("Gamemode")
+        local Theme = Window:NewTab("Theme")
+        local Events = Window:NewTab("Events")
+        local Traps = Window:NewTab("Trigger")
+        local Boss = Window:NewTab("Gabriel")
+        local Emperor = Window:NewTab("Emperor")
+        local Ilija = Window:NewTab("Ilija")
+        local AGENT = Window:NewTab("AGENT")
+        local Shadow = Window:NewTab("Reikgon")
+        local Settings = Window:NewTab("Settings")
+        
+        -- Local --
+        
+        local Play = game:GetService("Workspace").ServerStuff.playAudio
+        
+        -- Holdout --
+        
+        local Holdpot = Songs:NewSection("Boss Themes")
+        
+        Holdpot:NewButton("Medieval", "Knights Theme", function()
+        Play:FireServer({"songs", "holdout_bosses"}, "medieval", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Boss Themes";
+        Text = "Playing - Knights Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Holdpot:NewButton("Zealot", "Zealot Theme", function()
+        Play:FireServer({"songs", "holdout_bosses"}, "zealot", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Boss Themes";
+        Text = "Playing - Zealot Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        Holdpot:NewButton("Sickler", "Sickler Theme", function()
+        Play:FireServer({"songs", "holdout_bosses"}, "sickler", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Boss Themes";
+        Text = "Playing - Sickler Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        Holdpot:NewButton("Sledge", "Sledge Queen Theme", function()
+        Play:FireServer({"songs", "holdout_bosses"}, "sledge", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Boss Themes";
+        Text = "Playing - Sledge Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        Holdpot:NewButton("Yosef", "Yosef Theme", function()
+        Play:FireServer({"songs", "holdout_bosses"}, "yosef", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Boss Themes";
+        Text = "Playing - Yosef Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        Holdpot:NewButton("Rhyer", "Rhyer Theme", function()
+        Play:FireServer({"songs", "holdout_bosses"}, "rhyer", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Boss Themes";
+        Text = "Playing - Rhyer Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        Holdpot:NewButton("Bad", "Bad Business Theme", function()
+        Play:FireServer({"songs", "holdout_bosses"}, "bad", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Boss Themes";
+        Text = "Playing - Bad Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        -- Theme --
+        
+        local Theme = Theme:NewSection("Theme")
+        
+        Theme:NewButton("Scavfinal", "ScavFinal Theme", function()
+        Play:FireServer({"songs"}, "scavfinal", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Theme";
+        Text = "Playing - Scavfinal Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Theme:NewButton("Scavwars", "Scavwars Theme", function()
+        Play:FireServer({"songs"}, "scavwar", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Theme";
+        Text = "Playing - Scavwars Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Theme:NewButton("Final", "This shit Dope", function()
+        Play:FireServer({"songs"}, "final", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Theme";
+        Text = "Playing - Final Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Theme:NewButton("End Credits", "Ending Credits Theme", function()
+        Play:FireServer({"songs"}, "unused2", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Theme";
+        Text = "Playing - End Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Theme:NewButton("Unused", "Unused Theme", function()
+        Play:FireServer({"songs"}, "unused1", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Theme";
+        Text = "Playing - Unused Theme";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        -- Gamemode --
+        
+        local Mode = Gamemode:NewSection("Random Themes")
+        
+        Mode:NewButton("Juggernaut", "Juggernaut", function()
+        Play:FireServer({"gamemode"}, "juggernaut", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Random";
+        Text = "Playing - Juggernaut";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Mode:NewButton("Bloodrush", "Bloodrush", function()
+        Play:FireServer({"gamemode"}, "bloodrush", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Random";
+        Text = "Playing - Bloodrush";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Mode:NewButton("GamemodeA", "GamemodeA", function()
+        Play:FireServer({"gamemode"}, "gamemodeA", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Random";
+        Text = "Playing - GamemodeA";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Mode:NewButton("GamemodeB", "GamemodeB", function()
+        Play:FireServer({"gamemode"}, "gamemodeB", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Random";
+        Text = "Playing - GamemodeB";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Mode:NewButton("GamemodeC", "GamemodeC", function()
+        Play:FireServer({"gamemode"}, "gamemodeC", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Random";
+        Text = "Playing - GamemodeC";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Mode:NewButton("Horn", "Horn", function()
+        Play:FireServer({"gamemode"}, "horn", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Random";
+        Text = "Playing - Horn";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        -- Events --
+        
+        local Event = Events:NewSection("Events Sounds")
+        
+        Event:NewButton("KillSwitch", "KillSwitch", function()
+        Play:FireServer({"events", "survevents"}, "killswitch", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Events";
+        Text = "Playing - KillSwitch";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Event:NewButton("Flareraid", "Flareraid", function()
+        Play:FireServer({"events", "survevents"}, "flareraid", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Events";
+        Text = "Playing - Flareraid";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Event:NewButton("Bloodrush", "Bloodrush", function()
+        Play:FireServer({"events", "survevents"}, "bloodrush", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Events";
+        Text = "Playing - Bloodrush";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Event:NewButton("Thunder", "Thunder", function()
+        Play:FireServer({"events", "survevents"}, "thunder", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Events";
+        Text = "Playing - Thunder";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Event:NewButton("Exotic", "Exotic", function()
+        Play:FireServer({"events", "survevents"}, "exotic", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Events";
+        Text = "Playing - Exotic";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        Event:NewButton("Monte", "Monte", function()
+        Play:FireServer({"events", "survevents"}, "monte", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Events";
+        Text = "Playing - Monte";
+        Icon = "rbxassetid://6833114846";
+        Duration = 4;
+        })
+        end)
+        
+        -- Traps --
+        
+        local Tr = Traps:NewSection("Trigger Sounds")
+        
+        Tr:NewButton("Flare", "Flare Trap", function()
+        Play:FireServer({"world_item"}, "trap_flare1", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Trigger";
+        Text = "Triggering - Flare";
+        Icon = "rbxassetid://6833114846";
+        Duration = 1;
+        })
+        end)
+        
+        Tr:NewButton("Flare2", "Flare Trap2", function()
+        Play:FireServer({"world_item"}, "trap_flare2", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Trigger";
+        Text = "Triggering - Flare2";
+        Icon = "rbxassetid://6833114846";
+        Duration = 1;
+        })
+        end)
+        
+        Tr:NewButton("Dynamite", "Dynamite Trap", function()
+        Play:FireServer({"world_item"}, "trap_fuse", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Trigger";
+        Text = "Triggering - Flare";
+        Icon = "rbxassetid://6833114846";
+        Duration = 1;
+        })
+        end)
+        
+        Tr:NewButton("Firebomb", "Firebomb", function()
+        Play:FireServer({"world_item"}, "firebomb", workspace)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Trigger";
+        Text = "Triggering - Firebomb";
+        Icon = "rbxassetid://6833114846";
+        Duration = 1;
+        })
+        end)
+        
+        -- Boss --
+        
+        local Boss = Boss:NewSection("Voicelines")
+        
+        Boss:NewDropdown("Taunt", "Taunt", {"taunt_1", "taunt_2", "taunt_3", "taunt_4", "taunt_5", "taunt_6", "taunt_7", "taunt_8", "taunt_9"}, function(Select)
+        Play:FireServer({"ai", "boss"}, Select, workspace)
+        end)
+        
+        Boss:NewDropdown("Hurt", "Hurt", {"hurt_1", "hurt_2", "hurt_3", "hurt_4"}, function(Hurt)
+        Play:FireServer({"ai", "boss"}, Hurt, workspace)
+        end)
+        
+        Boss:NewButton("Big Hurt", "Totally Moaning", function()
+        Play:FireServer({"ai", "boss"}, "big_hurt", workspace)
+        end)
+        
+        Boss:NewButton("Intro", "Introduction", function()
+        Play:FireServer({"ai", "boss"}, "intro_1", workspace)
+        end)
+        
+        Boss:NewButton("Intro2", "Introduction2", function()
+        Play:FireServer({"ai", "boss"}, "intro_2", workspace)
+        end)
+        
+        Boss:NewButton("Gameover", "Gameover", function()
+        Play:FireServer({"ai", "boss"}, "game_over1", workspace)
+        end)
+        
+        Boss:NewButton("Gameover2", "Gameover2", function()
+        Play:FireServer({"ai", "boss"}, "game_over2", workspace)
+        end)
+        
+        Boss:NewButton("Behold", "Behold Power of An Angels", function()
+        Play:FireServer({"ai", "boss"}, "behold", workspace)
+        end)
+        
+        Boss:NewButton("Enough", "Enough", function()
+        Play:FireServer({"ai", "boss"}, "enough", workspace)
+        end)
+        
+        Boss:NewButton("Woes", "Woes", function()
+        Play:FireServer({"ai", "boss"}, "woes", workspace)
+        end)
+        
+        -- Emperor --
+        
+        local Emp = Emperor:NewSection("Voicelines")
+        
+        Emp:NewDropdown("Begin", "Begin", {"begin1", "begin2", "begin3"}, function(begin)
+        Play:FireServer({"events", "emperor"}, begin, workspace)
+        end)
+        
+        Emp:NewDropdown("Blocked", "Blocked", {"blocked1", "blocked2", "blocked3", "blocked4", "blocked5"}, function(blocked)
+        Play:FireServer({"events", "emperor"}, blocked, workspace)
+        end)
+        
+        Emp:NewDropdown("Chatter", "Chatter", {"chatter1", "chatter2", "chatter3", "chatter4", "chatter5"}, function(chat)
+        Play:FireServer({"events", "emperor"}, chat, workspace)
+        end)
+        
+        Emp:NewDropdown("Confirm", "Confirm", {"confirm1", "confirm2", "confirm3", "confirm4", "confirm5"}, function(confirm)
+        Play:FireServer({"events", "emperor"}, confirm, workspace)
+        end)
+        
+        Emp:NewDropdown("Lowhealth", "Lowhealth", {"lowhealth1", "lowhealth2", "lowhealth3"}, function(low)
+        Play:FireServer({"events", "emperor"}, low, workspace)
+        end)
+        
+        -- Ilija --
+        
+        local Ilija = Ilija:NewSection("Voicelines")
+        
+        Ilija:NewDropdown("Arrive", "Arrive", {"arrive1", "arrive2", "arrive3"}, function(Arrive)
+        Play:FireServer({"voices", "ilija", "arrive"}, Arrive, workspace)
+        end)
+        
+        Ilija:NewDropdown("Quip", "Quip", {"quip1", "quip2", "quip3", "quip4", "quip5"}, function(Quip)
+        Play:FireServer({"voices", "ilija", "quip"}, Quip, workspace)
+        end)
+        
+        Ilija:NewDropdown("End", "End", {"end1", "end2", "end3"}, function(End)
+        Play:FireServer({"voices", "ilija", "end"}, End, workspace)
+        end)
+        
+        Ilija:NewDropdown("Reload", "Reload", {"reload1", "reload2", "reload3", "reload4", "reload5", "reload6", "reload7", "reload8", "reload9"}, function(Reload)
+        Play:FireServer({"voices", "ilija", "reload"}, Reload, workspace)
+        end)
+        
+        Ilija:NewDropdown("Shot", "Shot", {"shot1", "shot2", "shot3", "shot4", "shot5", "shot6", "shot7", "shot8", "shot9", "shot10", "shot11"}, function(Shot)
+        Play:FireServer({"voices", "ilija", "shot"}, Shot, workspace)
+        end)
+        
+        -- AGENT --
+        
+        local Agen = AGENT:NewSection("AGENT Voicelines")
+        
+        Agen:NewDropdown("Stormenter", "Stormenter", {"storm1", "storm2"}, function(storm)
+        Play:FireServer({"AGENT", "stormenter"}, storm, workspace)
+        end)
+        
+        Agen:NewDropdown("Stormleave", "Stormleave", {"storm1", "storm2"}, function(storm2)
+        Play:FireServer({"AGENT", "stormleave"}, storm2, workspace)
+        end)
+        
+        Agen:NewDropdown("hostile", "hostile", {"hostile1", "hostile2", "hostile3", "hostile4", "hostile5", "hostile6", "hostile7", "hostile8"}, function(hostile)
+        Play:FireServer({"AGENT", "hostile"}, hostile, workspace)
+        end)
+        
+        Agen:NewDropdown("Heavy", "Heavy", {"heavy1", "heavy2"}, function(heavy)
+        Play:FireServer({"AGENT", "heavy"}, heavy, workspace)
+        end)
+        
+        Agen:NewDropdown("Join", "Join", {"join1", "join2", "join3"}, function(join)
+        Play:FireServer({"AGENT", "join"}, join, workspace)
+        end)
+        
+        Agen:NewDropdown("Left", "Left", {"left1", "left2", "left3"}, function(left)
+        Play:FireServer({"AGENT", "left"}, left, workspace)
+        end)
+        
+        Agen:NewDropdown("Down", "Down", {"down1", "down2"}, function(down)
+        Play:FireServer({"AGENT", "down"}, down, workspace)
+        end)
+        
+        Agen:NewDropdown("Hvt", "Hvt", {"hvt1", "hvt2", "hvt3"}, function(hvt)
+        Play:FireServer({"AGENT", "hvt"}, hvt, workspace)
+        end)
+        
+        Agen:NewDropdown("Lowhealth", "Lowhealth", {"lowhealth1", "lowhealth2", "lowhealth3"}, function(low)
+        Play:FireServer({"AGENT", "lowhealth"}, low, workspace)
+        end)
+        
+        Agen:NewDropdown("Echo Start", "Echo Start", {"start1", "start2"}, function(storm)
+        Play:FireServer({"AGENT", "echo_start"}, storm, workspace)
+        end)
+        
+        -- Shadow --
+        
+        local Shadow = Shadow:NewSection("Reikgon Voices")
+        
+        Shadow:NewButton("Sickler Scream", "Alert", function()
+        Play:FireServer({"shadow"}, "alert", workspace)
+        end)
+        
+        Shadow:NewButton("Chainbreak", "Chainbreak", function()
+        Play:FireServer({"shadow"}, "chainbreak", workspace)
+        end)
+        
+        Shadow:NewButton("Sickler Theme", "Sickler Provoked Theme", function()
+        Play:FireServer({"shadow"}, "sickler_song", workspace)
+        end)
+        
+        Shadow:NewButton("Sickler Crying", "Sickler Idle", function()
+        Play:FireServer({"shadow"}, "sickler_idle", workspace)
+        end)
+        
+        Shadow:NewDropdown("Sickler", "Sickler Voice", {"sickler_noise1", "sickler_noise2", "sickler_noise3"}, function(sickler)
+        Play:FireServer({"shadow"}, sickler, workspace)
+        end)
+        
+        Shadow:NewLabel("Skinner")
+        
+        Shadow:NewDropdown("Skinner", "Skinner Voice", {"skinner_noise1", "skinner_noise2", "skinner_noise3", "skinner_noise4", "skinner_noise5"}, function(skinner)
+        Play:FireServer({"shadow"}, skinner, workspace)
+        end)
+        
+        Shadow:NewLabel("Hanger")
+        
+        Shadow:NewDropdown("Hanger Alert", "Hanger Alert", {"alert1", "alert2", "alert3"}, function(hanger)
+        Play:FireServer({"shadow", "hang"}, hanger, workspace)
+        end)
+        
+        Shadow:NewButton("Influence", "influence", function()
+        Play:FireServer({"shadow", "hang"}, "influence1", workspace)
+        end)
+        
+        Shadow:NewButton("Influence2", "influence2", function()
+        Play:FireServer({"shadow", "hang"}, "influence2", workspace)
+        end)
+        
+        Shadow:NewButton("Cast", "Possessed Sound", function()
+        Play:FireServer({"shadow", "hang"}, "cast", workspace)
+        end)
+        
+        Shadow:NewButton("Resist", "Out of Possessed", function()
+        Play:FireServer({"shadow", "hang"}, "resist", workspace)
+        end)
+        
+        Shadow:NewLabel("Hidden")
+        
+        Shadow:NewButton("Attack", "Hidden Attack Sound", function()
+        Play:FireServer({"events", "hiddenB"}, "attack", workspace)
+        end)
+        
+        Shadow:NewDropdown("Voicelines", "Taunt", {"taunt1", "taunt2", "taunt3", "taunt4"}, function(hidden)
+        Play:FireServer({"events", "hiddenB"}, hidden, workspace)
+        end)
+        
+        -- Settings --
+        
+        local Set = Settings:NewSection("Settings")
+        
+        Set:NewKeybind("UI", "UI Keybind", Enum.KeyCode.RightShift, function()
+            Library:ToggleUI()
+        end)
+    end,
+ })
 
 local settingsTab = Window:CreateTab("Settings", 13075268290)
 
@@ -5380,7 +4861,8 @@ local Net = settingsTab:CreateSection("Netless", false, false, "rbxthumb://type=
 		loadstring(game:HttpGet(('https://raw.githubusercontent.com/KattWasTaken/pepsi_hub/main/netless.txt'),true))()
 	end,
  })
-
+ 
+ 
  local FTab = Window:CreateTab("Facts Tab", 13075637275)
 
 local windowSettings = FTab:CreateSection("Facts")
